@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/atcrowdfunding01-admin-parent/atcrowdfunding02-admin-webui" />
+    <file type="web" url="file://$PROJECT_DIR$/crowdfunding01-admin-parent/crowdfunding02-admin-webui" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/crowdfunding01-admin-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowdfunding01-admin-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowdfunding05-common-util/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowdfunding06-common-reverse/pom.xml" />
+        <option value="$PROJECT_DIR$/crowdfunding05-common-util/pom.xml" />
+        <option value="$PROJECT_DIR$/crowdfunding06-common-reverse/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
