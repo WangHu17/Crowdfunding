@@ -1,6 +1,6 @@
 import com.example.crowdfunding.bean.Admin;
 import com.example.crowdfunding.mapper.AdminMapper;
-import com.example.crowdfunding.service.api.SaveAdminService;
+import com.example.crowdfunding.service.api.AdminService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,12 +26,12 @@ public class Test {
     private AdminMapper adminMapper;
 
     @Autowired
-    private SaveAdminService saveAdminService;
+    private AdminService adminService;
 
     @org.junit.Test
     public void test1(){
         Admin admin = new Admin(null, "wanghu1", "5517", "王虎1", "wanghu1@qq.com", null);
-        saveAdminService.saveAdmin(admin);
+        adminService.saveAdmin(admin);
     }
 
     @org.junit.Test

@@ -2,7 +2,7 @@ package com.example.crowdfunding.mvc.controller;
 
 import com.example.crowdfunding.bean.Admin;
 import com.example.crowdfunding.bean.TestAjax;
-import com.example.crowdfunding.service.api.SaveAdminService;
+import com.example.crowdfunding.service.api.AdminService;
 import com.example.crowdfunding.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    private SaveAdminService adminService;
+    private AdminService adminService;
 
     //接收复杂对象
 

@@ -9,8 +9,10 @@ import java.util.List;
  * @discrption：
  * @create 2021-09-14 19:17
  */
-public interface SaveAdminService {
+public interface AdminService {
     public void saveAdmin(Admin admin);
 
     public List<Admin> getAll();
+
+    public Admin checkAdmin(Admin admin);
 }

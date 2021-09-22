@@ -1,6 +1,7 @@
 package com.example.crowdfunding.mvc.config;
 
 import com.example.crowdfunding.constant.CrowdConstant;
+import com.example.crowdfunding.exception.LoginFailedException;
 import com.example.crowdfunding.util.CrowdUtil;
 import com.example.crowdfunding.util.ResultEntity;
 import com.google.gson.Gson;
@@ -21,6 +22,18 @@ import java.io.IOException;
 @ControllerAdvice
 public class CrowdExceptionResolver {
 
+    @ExceptionHandler(value = LoginFailedException.class)
+    public ModelAndView resolveLoginFailedException(
+            LoginFailedException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "admin-login";
+
+        return commonResolve(viewName, exception, request, response);
+    }
+
     @ExceptionHandler(value = ArithmeticException.class)
     public ModelAndView resolveMathException(
             ArithmeticException exception,
@@ -37,7 +50,8 @@ public class CrowdExceptionResolver {
     public ModelAndView resolveNullPointerException(
             NullPointerException exception,
             HttpServletRequest request,
-            HttpServletResponse response) throws IOException {
+            HttpServletResponse response
+    ) throws IOException {
 
         String viewName = "system-error";
 

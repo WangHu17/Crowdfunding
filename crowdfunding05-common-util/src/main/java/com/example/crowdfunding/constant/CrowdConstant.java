@@ -8,6 +8,9 @@ package com.example.crowdfunding.constant;
 public class CrowdConstant {
 
     public static final String ATTR_NAME_EXCEPTION = "exception";
-    public static final String MESSAGE_LOGIN_FAILED = "登录失败！请确认账 号密码是否正确！";
-
+    public static final String MESSAGE_STRING_INVALIDATE = "登录失败！密码无效";
+    public static final String MESSAGE_NO_ADMIN_ACCOUNT = "没有此用户名";
+    public static final String MESSAGE_LOGIN_FAILED = "登录失败！请确认账号密码是否正确！";
+    public static final String MESSAGE_ADMIN_ACCOUNT_IS_NOT_UNIQUE = "有多个此账号";
+    public static final String ADMIN_LOGIN_ACCOUNT = "loginAdmin";
 }
