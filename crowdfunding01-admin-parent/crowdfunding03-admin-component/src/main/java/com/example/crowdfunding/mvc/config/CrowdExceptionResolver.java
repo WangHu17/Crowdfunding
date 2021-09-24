@@ -2,6 +2,8 @@ package com.example.crowdfunding.mvc.config;
 
 import com.example.crowdfunding.constant.CrowdConstant;
 import com.example.crowdfunding.exception.AccessForbiddenException;
+import com.example.crowdfunding.exception.LoginAcctAlreadyInUseException;
+import com.example.crowdfunding.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.example.crowdfunding.exception.LoginFailedException;
 import com.example.crowdfunding.util.CrowdUtil;
 import com.example.crowdfunding.util.ResultEntity;
@@ -22,9 +24,33 @@ import java.io.IOException;
 @ControllerAdvice
 public class CrowdExceptionResolver {
 
+    @ExceptionHandler(value = LoginAcctAlreadyInUseForUpdateException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseForUpdateException(
+            LoginAcctAlreadyInUseForUpdateException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "system-error";
+
+        return commonResolve(viewName, exception, request, response);
+    }
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUseException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseException(
+            LoginAcctAlreadyInUseException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "admin-user-add";
+
+        return commonResolve(viewName, exception, request, response);
+    }
+
     @ExceptionHandler(value = AccessForbiddenException.class)
     public ModelAndView resolveAccessForbiddenException(
-            LoginFailedException exception,
+            AccessForbiddenException exception,
             HttpServletRequest request,
             HttpServletResponse response
     ) throws IOException {

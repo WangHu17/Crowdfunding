@@ -16,7 +16,7 @@ import java.sql.SQLException;
  * @create 2021-08-19 17:59
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml","classpath:spring-persist-tx.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml", "classpath:spring-persist-tx.xml"})
 public class Test {
 
     @Autowired
@@ -29,7 +29,7 @@ public class Test {
     private AdminService adminService;
 
     @org.junit.Test
-    public void test1(){
+    public void test1() {
         Admin admin = new Admin(null, "wanghu1", "5517", "王虎1", "wanghu1@qq.com", null);
         adminService.saveAdmin(admin);
     }
@@ -40,5 +40,10 @@ public class Test {
         System.out.println(connection);
     }
 
-
+    @org.junit.Test
+    public void testSaveAdminMulti() {
+        for (int i = 0; i < 352; i++) {
+            adminMapper.insert(new Admin(null, "loginAcct" + i, "userPswd" + i, "userName" + i, "email" + i + "@qq.com", null));
+        }
+    }
 }

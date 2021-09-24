@@ -1,6 +1,8 @@
 package com.example.crowdfunding.service.api;
 
 import com.example.crowdfunding.bean.Admin;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -15,4 +17,13 @@ public interface AdminService {
     public List<Admin> getAll();
 
     public Admin checkAdmin(Admin admin);
+
+    public PageInfo<Admin> getAdminByKeyWord(String keyword, Integer pageNum, Integer pageSize);
+
+    public void deleteAdminById(Integer id);
+
+    public Admin getAdminById(Integer id);
+
+    public void updateAdminById(Admin admin);
+
 }

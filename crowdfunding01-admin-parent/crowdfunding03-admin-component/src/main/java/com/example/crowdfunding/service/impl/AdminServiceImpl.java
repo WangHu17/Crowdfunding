@@ -3,13 +3,20 @@ package com.example.crowdfunding.service.impl;
 import com.example.crowdfunding.bean.Admin;
 import com.example.crowdfunding.bean.AdminExample;
 import com.example.crowdfunding.constant.CrowdConstant;
+import com.example.crowdfunding.exception.LoginAcctAlreadyInUseException;
+import com.example.crowdfunding.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.example.crowdfunding.exception.LoginFailedException;
 import com.example.crowdfunding.mapper.AdminMapper;
 import com.example.crowdfunding.service.api.AdminService;
 import com.example.crowdfunding.util.CrowdUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,25 +29,39 @@ import java.util.Objects;
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
-    private AdminMapper mapper;
+    private AdminMapper adminMapper;
 
     @Override
     public void saveAdmin(Admin admin) {
-        mapper.insert(admin);
+        String userPswd = admin.getUserPswd();
+        String md5 = CrowdUtil.md5(userPswd);
+        admin.setUserPswd(md5);
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String createTime = format.format(date);
+        admin.setCreateTime(createTime);
+        try {
+            adminMapper.insert(admin);
+        }catch (Exception e){
+            if (e instanceof DuplicateKeyException){
+                throw new LoginAcctAlreadyInUseException(CrowdConstant.MESSAGE_ACCOUNT_ALREADY_IN_USE);
+            }
+        }
     }
 
     @Override
     public List<Admin> getAll() {
-        return mapper.selectByExample(new AdminExample());
+        return adminMapper.selectByExample(new AdminExample());
     }
 
+    //登录检查输入的账号密码
     @Override
     public Admin checkAdmin(Admin admin) {
 
         // 1、根据输入的用户名密码从数据库获取数据
         AdminExample example = new AdminExample();
         example.createCriteria().andLoginAcctEqualTo(admin.getLoginAcct());
-        List<Admin> list = mapper.selectByExample(example);
+        List<Admin> list = adminMapper.selectByExample(example);
 
         // 2、判断是否有此账号
         if (list == null || list.size() == 0){
@@ -71,4 +92,35 @@ public class AdminServiceImpl implements AdminService {
 
         return adminFromDB;
     }
+
+    @Override
+    public PageInfo<Admin> getAdminByKeyWord(String keyword, Integer pageNum, Integer pageSize) {
+
+        PageHelper.startPage(pageNum, pageSize);
+        List<Admin> admins = adminMapper.selectByKeyWord(keyword);
+        return new PageInfo<>(admins);
+
+    }
+
+    @Override
+    public void deleteAdminById(Integer id) {
+        adminMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public Admin getAdminById(Integer id) {
+        return adminMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateAdminById(Admin admin) {
+        try{
+            adminMapper.updateByPrimaryKeySelective(admin);
+        }catch (Exception e){
+            if (e instanceof DuplicateKeyException){
+                throw new LoginAcctAlreadyInUseForUpdateException(CrowdConstant.MESSAGE_ACCOUNT_ALREADY_IN_USE);
+            }
+        }
+    }
+
 }
