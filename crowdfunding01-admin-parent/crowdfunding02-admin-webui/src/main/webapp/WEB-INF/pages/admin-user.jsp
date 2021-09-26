@@ -7,7 +7,6 @@
 <script src="static/jquery/jquery.pagination.js"></script>
 <body>
 <jsp:include page="include-nev.jsp"/>
-
 <div class="container-fluid">
     <div class="row">
         <jsp:include page="include-sidebar.jsp"/>
@@ -18,11 +17,13 @@
                 </div>
                 <div class="panel-body">
 
-                    <form action="admin/get/user.html" method="post" class="form-inline" role="form" style="float:left;">
+                    <form action="admin/get/user.html" method="post" class="form-inline" role="form"
+                          style="float:left;">
                         <div class="form-group has-feedback">
                             <div class="input-group">
                                 <div class="input-group-addon">查询条件</div>
-                                <input name="keyword" class="form-control has-success" type="text" placeholder="请输入查询条件">
+                                <input name="keyword" class="form-control has-success" type="text"
+                                       placeholder="请输入查询条件">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-search"></i> 查询
@@ -32,7 +33,8 @@
                     <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><i
                             class=" glyphicon glyphicon-remove"></i> 删除
                     </button>
-                    <a href="admin/to/add.html" class="btn btn-primary" style="float:right;"><i class="glyphicon glyphicon-plus"></i> 新增</a>
+                    <a href="admin/to/add.html" class="btn btn-primary" style="float:right;"><i
+                            class="glyphicon glyphicon-plus"></i> 新增</a>
                     <br>
                     <hr style="clear:both;">
 
@@ -81,6 +83,7 @@
                             <tfoot>
                             <tr>
                                 <td colspan="6" align="center">
+                                    <%-- 分页条 --%>
                                     <div id="Pagination" class="pagination"></div>
                                 </td>
                             </tr>
