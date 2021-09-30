@@ -27,7 +27,7 @@
                 <!-- key属性指定异常全类名 -->
                 <!-- 标签体中写对应的视图（这个值要拼前后缀得到具体路径） -->
                 <prop key="java.lang.Exception">system-error</prop>
-<!--                <prop key="com.example.crowdfunding.exception.AccessForbiddenException">admin-login</prop>-->
+                <prop key="com.example.crowdfunding.exception.AccessForbiddenException">admin-login</prop>
             </props>
         </property>
     </bean>
@@ -52,5 +52,7 @@
     <mvc:view-controller path="/admin/to/login.html" view-name="admin-login"/>
     <mvc:view-controller path="/admin/to/main.html" view-name="admin-main"/>
     <mvc:view-controller path="/admin/to/add.html" view-name="admin-user-add"/>
+    <mvc:view-controller path="/admin/to/role.html" view-name="admin-role"/>
+    <mvc:view-controller path="/admin/to/menu.html" view-name="admin-menu"/>
 
 </beans>

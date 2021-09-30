@@ -1,6 +1,7 @@
 package com.example.crowdfunding.service.impl;
 
 import com.example.crowdfunding.bean.Role;
+import com.example.crowdfunding.bean.RoleExample;
 import com.example.crowdfunding.mapper.RoleMapper;
 import com.example.crowdfunding.service.api.RoleService;
 import com.github.pagehelper.PageHelper;
@@ -26,6 +27,23 @@ public class RoleServiceImpl implements RoleService {
         PageHelper.startPage(pageNum,pageSize);
         List<Role> roles = roleMapper.selectByKeyword(keyword);
         return new PageInfo<>(roles);
+    }
+
+    @Override
+    public int addRole(String roleName) {
+        return roleMapper.insert(new Role(null,roleName));
+    }
+
+    @Override
+    public int updateRoleById(Role role) {
+        return roleMapper.updateByPrimaryKey(role);
+    }
+
+    @Override
+    public int deleteRolesByIds(List<Integer> ids) {
+        RoleExample example = new RoleExample();
+        example.createCriteria().andIdIn(ids);
+        return roleMapper.deleteByExample(example);
     }
 
 }

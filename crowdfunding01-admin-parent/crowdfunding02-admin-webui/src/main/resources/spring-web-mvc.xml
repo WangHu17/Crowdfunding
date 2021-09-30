@@ -53,5 +53,6 @@
     <mvc:view-controller path="/admin/to/main.html" view-name="admin-main"/>
     <mvc:view-controller path="/admin/to/add.html" view-name="admin-user-add"/>
     <mvc:view-controller path="/admin/to/role.html" view-name="admin-role"/>
+    <mvc:view-controller path="/admin/to/menu.html" view-name="admin-menu"/>
 
 </beans>
