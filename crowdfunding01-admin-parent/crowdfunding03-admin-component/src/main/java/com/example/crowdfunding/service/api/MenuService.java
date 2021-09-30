@@ -13,4 +13,6 @@ public interface MenuService {
 
     public List<Menu> getAllMenu();
 
+    public int addMenu(Menu menu);
+
 }

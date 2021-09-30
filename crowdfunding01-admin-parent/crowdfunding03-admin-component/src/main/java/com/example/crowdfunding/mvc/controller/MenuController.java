@@ -21,6 +21,7 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+    //获取菜单
     @RequestMapping("/admin/get/menu.json")
     public Msg getAllMenu(){
         List<Menu> menus = menuService.getAllMenu();
@@ -49,6 +50,14 @@ public class MenuController {
 
         //最后，返回根节点即可
         return Msg.success().add("root",root);
+    }
+
+    //添加菜单节点
+    @RequestMapping("/admin/add/menu.json")
+    public Msg addMenu(Menu menu) {
+        int i = menuService.addMenu(menu);
+        if (i == 1) return Msg.success();
+        return Msg.fail();
     }
 
 }
