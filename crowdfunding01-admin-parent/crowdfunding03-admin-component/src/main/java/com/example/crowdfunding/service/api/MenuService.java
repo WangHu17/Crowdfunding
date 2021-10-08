@@ -15,4 +15,8 @@ public interface MenuService {
 
     public int addMenu(Menu menu);
 
+    public int updateMenuNodeById(Menu menu);
+
+    public int deleteMenuNodeById(Integer id);
+
 }

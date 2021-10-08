@@ -26,8 +26,9 @@
         </div>
     </div>
 </div>
-<%--添加/编辑菜单模态框--%>
+<%--添加菜单模态框--%>
 <jsp:include page="modal-menu-add.jsp"/>
+<%--更新菜单模态框--%>
 <jsp:include page="modal-menu-edit.jsp"/>
 
 </body>

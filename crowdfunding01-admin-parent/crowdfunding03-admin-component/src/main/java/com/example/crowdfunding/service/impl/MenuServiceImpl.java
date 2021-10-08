@@ -29,4 +29,14 @@ public class MenuServiceImpl implements MenuService {
     public int addMenu(Menu menu) {
         return menuMapper.insert(menu);
     }
+
+    @Override
+    public int updateMenuNodeById(Menu menu) {
+        return menuMapper.updateByPrimaryKeySelective(menu);
+    }
+
+    @Override
+    public int deleteMenuNodeById(Integer id) {
+        return menuMapper.deleteByPrimaryKey(id);
+    }
 }

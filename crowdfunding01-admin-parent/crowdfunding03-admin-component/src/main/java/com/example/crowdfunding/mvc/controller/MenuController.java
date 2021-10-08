@@ -5,6 +5,7 @@ import com.example.crowdfunding.service.api.MenuService;
 import com.example.crowdfunding.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -56,6 +57,22 @@ public class MenuController {
     @RequestMapping("/admin/add/menu.json")
     public Msg addMenu(Menu menu) {
         int i = menuService.addMenu(menu);
+        if (i == 1) return Msg.success();
+        return Msg.fail();
+    }
+
+    //更新菜单节点
+    @RequestMapping("/admin/update/menu.json")
+    public Msg updateMenuNode(Menu menu){
+        int i = menuService.updateMenuNodeById(menu);
+        if (i == 1) return Msg.success();
+        return Msg.fail();
+    }
+
+    //删除菜单节点
+    @RequestMapping("/admin/delete/menu.json")
+    public Msg deleteMenuNode(@RequestParam("id")Integer id){
+        int i = menuService.deleteMenuNodeById(id);
         if (i == 1) return Msg.success();
         return Msg.fail();
     }
