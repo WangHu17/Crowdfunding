@@ -223,7 +223,7 @@ function generateRolesListHtml(pageInfo) {
             "              <td><input class='itemCheckBox' type=\"checkbox\"></td>\n" +
             "              <td>" + this.name + "</td>\n" +
             "              <td>\n" +
-            "                  <button type=\"button\" class=\"btn btn-success btn-xs\"><i\n" +
+            "                  <button id = " + this.id + " type=\"button\" class=\"btn btn-success btn-xs assignAuthBtn\"><i\n" +
             "                          class=\" glyphicon glyphicon-check\"></i></button>\n" +
             "                  <button id = " + this.id + " type=\"button\" class=\"btn btn-primary btn-xs editRoleBtn\"><i\n" +
             "                          class=\" glyphicon glyphicon-pencil\"></i></button>\n" +
