@@ -5,7 +5,10 @@
 <jsp:include page="include-head.jsp"/>
 <link rel="stylesheet" href="static/css/pagination1.css">
 <script src="static/jquery/jquery.pagination.js"></script>
+<link rel="stylesheet" href="static/ztree/zTreeStyle.css">
+<script src="static/ztree/jquery.ztree.all-3.5.min.js"></script>
 <script type="text/javascript" src="static/crowd/js/role.js"></script>
+<script type="text/javascript" src="static/crowd/js/role_assignAuth.js"></script>
 <body>
 <%--顶栏--%>
 <jsp:include page="include-nev.jsp"/>
@@ -116,6 +119,26 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary updateRoleBtn">更新</button>
+            </div>
+        </div>
+    </div>
+</div>
+<%--权限分配模态框--%>
+<div class="modal fade" id="myAssignAuthModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">权限分配</h4>
+            </div>
+            <div class="modal-body">
+                <%--权限树型列表--%>
+                <ul id="authTreeDemo" class="ztree"></ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary updateRoleBtn">权限选择完成，保存</button>
             </div>
         </div>
     </div>
