@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wanghu
@@ -49,5 +50,23 @@ public class AssignServiceImpl implements AssignService {
     @Override
     public List<Auth> getAllAuthList() {
         return authMapper.selectByExample(new AuthExample());
+    }
+
+    @Override
+    public List<Integer> getAssignedAuthsByRoleId(Integer roleId) {
+        return assignMapper.getAssignedAuthsByRoleId(roleId);
+    }
+
+    @Override
+    public int saveRoleIdAndAuths(Map<String, List<Integer>> map) {
+        // 获取角色id
+        List<Integer> roleIdList = map.get("roleId");
+        Integer roleId = roleIdList.get(0);
+        // 先删除该角色已分配的全部权限
+        assignMapper.deleteAllAssignedAuthByRoleId(roleId);
+        // 获取权限集合
+        List<Integer> authIds = map.get("authIds");
+        // 保存权限
+        return assignMapper.insertAuths(roleId, authIds);
     }
 }

@@ -5,6 +5,7 @@ import com.example.crowdfunding.bean.Auth;
 import com.example.crowdfunding.bean.Role;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wanghu
@@ -20,4 +21,8 @@ public interface AssignService {
     int assignRoles(Integer adminId, List<Integer> roles);
 
     List<Auth> getAllAuthList();
+
+    List<Integer> getAssignedAuthsByRoleId(Integer roleId);
+
+    int saveRoleIdAndAuths(Map<String, List<Integer>> map);
 }

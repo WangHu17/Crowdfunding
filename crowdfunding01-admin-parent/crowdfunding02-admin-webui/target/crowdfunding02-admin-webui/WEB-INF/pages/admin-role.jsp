@@ -138,7 +138,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary updateRoleBtn">权限选择完成，保存</button>
+                <button id="saveAuthBtn" type="button" class="btn btn-primary updateRoleBtn">权限选择完成，保存</button>
             </div>
         </div>
     </div>

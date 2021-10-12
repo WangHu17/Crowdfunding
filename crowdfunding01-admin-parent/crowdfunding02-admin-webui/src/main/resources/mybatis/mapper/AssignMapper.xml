@@ -2,25 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.crowdfunding.mapper.AssignMapper">
     <resultMap id="BaseResultMap" type="com.example.crowdfunding.bean.Role">
-        <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="name" jdbcType="CHAR" property="name" />
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="CHAR" property="name"/>
     </resultMap>
 
     <select id="getUnAssignedRoles" resultMap="BaseResultMap">
-        select id,name from t_role where id not in (select role_id from inner_admin_role where admin_id = #{adminId})
+        select id, name
+        from t_role
+        where id not in (select role_id from inner_admin_role where admin_id = #{adminId})
     </select>
 
     <select id="getAssignedRoles" resultMap="BaseResultMap">
-        select id,name from t_role where id in (select role_id from inner_admin_role where admin_id = #{adminId})
+        select id, name
+        from t_role
+        where id in (select role_id from inner_admin_role where admin_id = #{adminId})
+    </select>
+
+    <select id="getAssignedAuthsByRoleId" resultType="int">
+        select auth_id
+        from inner_role_auth
+        where role_id = #{roleId}
     </select>
 
     <delete id="deleteAllAssignedRolesByAdminId" parameterType="java.lang.Integer">
-        delete from inner_admin_role where admin_id = #{adminId}
+        delete
+        from inner_admin_role
+        where admin_id = #{adminId}
+    </delete>
+
+    <delete id="deleteAllAssignedAuthByRoleId" parameterType="java.lang.Integer">
+        delete
+        from inner_role_auth
+        where role_id = #{roleId}
     </delete>
 
     <insert id="insertRoles">
         insert into inner_admin_role(admin_id,role_id) values
         <foreach collection="roleIdList" item="roleId" separator=",">(#{adminId},#{roleId})</foreach>
+    </insert>
+
+    <insert id="insertAuths">
+        insert into inner_role_auth(role_id, auth_id) values
+        <foreach collection="authIds" item="authId" separator=",">(#{roleId},#{authId})</foreach>
     </insert>
 
 </mapper>
