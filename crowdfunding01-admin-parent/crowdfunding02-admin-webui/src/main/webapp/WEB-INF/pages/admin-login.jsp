@@ -34,12 +34,14 @@
 </nav>
 
 <div class="container">
-    <form action="admin/do/login.html" method="post" class="form-signin" role="form">
+    <form action="security/do/login.html" method="post" class="form-signin" role="form">
         <h2 class="form-signin-heading">
             <i class="glyphicon glyphicon-log-in"></i>管理员登录
         </h2>
         <%--登录错误提示信息--%>
         <p style="color: red;">${requestScope.exception.message}</p>
+        <%-- SpringSecurity的提示信息 --%>
+        <p>${SPRING_SECURITY_LAST_EXCEPTION.message }</p>
         <div class="form-group has-success has-feedback">
             <input type="text" name="loginAcct" value="wanghu" class="form-control" placeholder="请输入登录账号" autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
