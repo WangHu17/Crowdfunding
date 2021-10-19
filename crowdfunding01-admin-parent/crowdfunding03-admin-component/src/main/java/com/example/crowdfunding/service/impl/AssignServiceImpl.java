@@ -28,12 +28,12 @@ public class AssignServiceImpl implements AssignService {
 
     @Override
     public List<Role> getUnAssignedRoles(Integer adminId) {
-        return assignMapper.getUnAssignedRoles(adminId);
+        return assignMapper.selectUnAssignedRoles(adminId);
     }
 
     @Override
     public List<Role> getAssignedRoles(Integer adminId) {
-        return assignMapper.getAssignedRoles(adminId);
+        return assignMapper.selectAssignedRoles(adminId);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class AssignServiceImpl implements AssignService {
 
     @Override
     public List<Integer> getAssignedAuthsByRoleId(Integer roleId) {
-        return assignMapper.getAssignedAuthsByRoleId(roleId);
+        return assignMapper.selectAssignedAuthsByRoleId(roleId);
     }
 
     @Override
@@ -68,5 +68,10 @@ public class AssignServiceImpl implements AssignService {
         List<Integer> authIds = map.get("authIds");
         // 保存权限
         return assignMapper.insertAuths(roleId, authIds);
+    }
+
+    @Override
+    public List<String> getAuthNameByAdminId(Integer adminId) {
+        return assignMapper.selectAuthNameByAdminId(adminId);
     }
 }

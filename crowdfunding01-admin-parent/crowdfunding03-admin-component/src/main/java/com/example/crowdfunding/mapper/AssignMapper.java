@@ -12,17 +12,28 @@ import java.util.List;
  */
 public interface AssignMapper {
 
-    List<Role> getUnAssignedRoles(Integer adminId);
+    //根据账号id查询未分配的角色
+    List<Role> selectUnAssignedRoles(Integer adminId);
 
-    List<Role> getAssignedRoles(Integer adminId);
+    //根据账号id查询已分配的角色
+    List<Role> selectAssignedRoles(Integer adminId);
 
+    //根据账号id删除所有已分配的角色
     void deleteAllAssignedRolesByAdminId(Integer adminId);
 
+    //插入新的角色
     int insertRoles(@Param("adminId") Integer adminId, @Param("roleIdList") List<Integer> roleIdList);
 
-    List<Integer> getAssignedAuthsByRoleId(Integer roleId);
+    //根据角色id查询已分配的权限
+    List<Integer> selectAssignedAuthsByRoleId(Integer roleId);
 
+    //根据角色id删除所有已分配的权限
     void deleteAllAssignedAuthByRoleId(Integer roleId);
 
+    //插入新的权限
     int insertAuths(@Param("roleId") Integer roleId,@Param("authIds") List<Integer> authIds);
+
+    //根据账号id查询已分配的权限名字
+    List<String> selectAuthNameByAdminId(Integer adminId);
+
 }

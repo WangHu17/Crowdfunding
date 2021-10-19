@@ -25,4 +25,6 @@ public interface AssignService {
     List<Integer> getAssignedAuthsByRoleId(Integer roleId);
 
     int saveRoleIdAndAuths(Map<String, List<Integer>> map);
+
+    List<String> getAuthNameByAdminId(Integer adminId);
 }

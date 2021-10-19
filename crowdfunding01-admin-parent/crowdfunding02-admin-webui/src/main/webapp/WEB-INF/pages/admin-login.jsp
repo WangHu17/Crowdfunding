@@ -11,7 +11,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keys" content="">
@@ -20,9 +20,9 @@
     <base href="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/"/>
     <script src="static/jquery/jquery-3.6.0.min.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -43,7 +43,7 @@
         <%-- SpringSecurity的提示信息 --%>
         <p>${SPRING_SECURITY_LAST_EXCEPTION.message }</p>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="loginAcct" value="wanghu" class="form-control" placeholder="请输入登录账号" autofocus>
+            <input type="text" name="loginAcct" value="wanghu1" class="form-control" placeholder="请输入登录账号" autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">

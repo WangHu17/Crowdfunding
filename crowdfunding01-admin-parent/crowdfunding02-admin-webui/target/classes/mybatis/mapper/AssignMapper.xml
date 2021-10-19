@@ -6,22 +6,30 @@
         <result column="name" jdbcType="CHAR" property="name"/>
     </resultMap>
 
-    <select id="getUnAssignedRoles" resultMap="BaseResultMap">
+    <select id="selectUnAssignedRoles" resultMap="BaseResultMap">
         select id, name
         from t_role
         where id not in (select role_id from inner_admin_role where admin_id = #{adminId})
     </select>
 
-    <select id="getAssignedRoles" resultMap="BaseResultMap">
+    <select id="selectAssignedRoles" resultMap="BaseResultMap">
         select id, name
         from t_role
         where id in (select role_id from inner_admin_role where admin_id = #{adminId})
     </select>
 
-    <select id="getAssignedAuthsByRoleId" resultType="int">
+    <select id="selectAssignedAuthsByRoleId" resultType="int">
         select auth_id
         from inner_role_auth
         where role_id = #{roleId}
+    </select>
+
+    <select id="selectAuthNameByAdminId" resultType="string">
+        select distinct t_auth.name
+        from t_auth
+        left join inner_role_auth on inner_role_auth.auth_id=t_auth.id
+        left join inner_admin_role on inner_admin_role.role_id=inner_role_auth.role_id
+        where inner_admin_role.admin_id=#{adminId} and t_auth.name != "" and t_auth.name is not null
     </select>
 
     <delete id="deleteAllAssignedRolesByAdminId" parameterType="java.lang.Integer">

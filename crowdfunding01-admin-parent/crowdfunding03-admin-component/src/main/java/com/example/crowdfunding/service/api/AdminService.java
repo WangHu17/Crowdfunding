@@ -25,4 +25,7 @@ public interface AdminService {
 
     public void updateAdminById(Admin admin);
 
+    //根据账号查询admin
+    public Admin getAdminByLoginAcct(String loginAcct);
+
 }
