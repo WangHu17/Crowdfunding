@@ -13,6 +13,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -31,11 +32,15 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private AdminMapper adminMapper;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @Override
     public void saveAdmin(Admin admin) {
         String userPswd = admin.getUserPswd();
-        String md5 = CrowdUtil.md5(userPswd);
-        admin.setUserPswd(md5);
+//        String md5 = CrowdUtil.md5(userPswd);
+        String encodePswd = passwordEncoder.encode(userPswd); // 使用带盐值的加密算法
+        admin.setUserPswd(encodePswd);
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createTime = format.format(date);

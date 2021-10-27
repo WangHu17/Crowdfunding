@@ -46,4 +46,8 @@
         <!-- 使用 basePackage 属性指定 Mapper 接口所在包 -->
         <property name="basePackage" value="com.example.crowdfunding.mapper"/>
     </bean>
+
+    <!-- 配置带盐值的加密算法(只能在spring的IOC容器里配置，这样SpringSecurity和Service都能获取到，
+        因为springMVC的IOC容器可以继承spring的IOC容器) -->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans>

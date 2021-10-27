@@ -4,7 +4,6 @@ import com.example.crowdfunding.bean.Admin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -21,6 +20,7 @@ public class SecurityAdmin extends User {
     public SecurityAdmin(Admin admin, List<GrantedAuthority> authorities) {
         super(admin.getLoginAcct(), admin.getUserPswd(), authorities);
         this.originalAdmin = admin;
+        this.originalAdmin.setUserPswd(null); // 擦除密码
     }
 
     public Admin getOriginalAdmin() {

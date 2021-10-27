@@ -1,12 +1,11 @@
 package com.example.crowdfunding.mvc.config;
 
 import com.example.crowdfunding.constant.CrowdConstant;
-import com.example.crowdfunding.exception.AccessForbiddenException;
 import com.example.crowdfunding.exception.LoginAcctAlreadyInUseException;
 import com.example.crowdfunding.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.example.crowdfunding.exception.LoginFailedException;
 import com.example.crowdfunding.util.CrowdUtil;
-import com.example.crowdfunding.util.ResultEntity;
+import com.example.crowdfunding.util.Msg;
 import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -48,18 +47,6 @@ public class CrowdExceptionResolver {
         return commonResolve(viewName, exception, request, response);
     }
 
-    @ExceptionHandler(value = AccessForbiddenException.class)
-    public ModelAndView resolveAccessForbiddenException(
-            AccessForbiddenException exception,
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) throws IOException {
-
-        String viewName = "admin-login";
-
-        return commonResolve(viewName, exception, request, response);
-    }
-
     @ExceptionHandler(value = LoginFailedException.class)
     public ModelAndView resolveLoginFailedException(
             LoginFailedException exception,
@@ -96,6 +83,17 @@ public class CrowdExceptionResolver {
         return commonResolve(viewName, exception, request, response);
     }
 
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView resolveException(
+            Exception exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "system-error";
+
+        return commonResolve(viewName, exception, request, response);
+    }
 
     // @ExceptionHandler将一个具体的异常类型和一个方法关联起来
     private ModelAndView commonResolve(
@@ -118,14 +116,16 @@ public class CrowdExceptionResolver {
         // 2.如果是Ajax请求
         if (judgeResult) {
 
-            // 3.创建ResultEntity对象
-            ResultEntity<Object> resultEntity = ResultEntity.failed(exception.getMessage());
+            // 3.创建Msg对象
+            Msg msg = Msg.fail();
+            // 设置异常信息
+            msg.setMsg(exception.getMessage());
 
             // 4.创建Gson对象
             Gson gson = new Gson();
 
             // 5.将ResultEntity对象转换为JSON字符串
-            String json = gson.toJson(resultEntity);
+            String json = gson.toJson(msg);
 
             // 6.将JSON字符串作为响应体返回给浏览器
             response.getWriter().write(json);

@@ -13,6 +13,8 @@
         <option value="$PROJECT_DIR$/atcrowdfunding06-common-reverse/pom.xml" />
         <option value="$PROJECT_DIR$/crowdfunding05-common-util/pom.xml" />
         <option value="$PROJECT_DIR$/crowdfunding06-common-reverse/pom.xml" />
+        <option value="$PROJECT_DIR$/crowdfunding/pom.xml" />
+        <option value="$PROJECT_DIR$/crowdfunding07-member-parent/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,0 +1,22 @@
+server:
+  port: 2000
+spring:
+  application:
+    name: wh-crowd-mysql
+  datasource:
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/project_crowdfunding?serverTimezone=UTC
+    username: root
+    password: 5517
+    driver-class-name: com.mysql.cj.jdbc.Driver
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+mybatis:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+logging:
+  level:
+    com.example.crowdfunding.mapper: debug
+    com.example.crowdfunding.test: debug

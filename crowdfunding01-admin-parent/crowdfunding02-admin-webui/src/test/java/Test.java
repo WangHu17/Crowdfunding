@@ -3,6 +3,7 @@ import com.example.crowdfunding.mapper.AdminMapper;
 import com.example.crowdfunding.service.api.AdminService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -28,10 +29,13 @@ public class Test {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @org.junit.Test
-    public void test1() {
-        Admin admin = new Admin(null, "wanghu1", "5517", "王虎1", "wanghu1@qq.com", null);
-        adminService.saveAdmin(admin);
+    public void testEncode(){
+        String encode = passwordEncoder.encode("5517");
+        System.out.println(encode);
     }
 
     @org.junit.Test

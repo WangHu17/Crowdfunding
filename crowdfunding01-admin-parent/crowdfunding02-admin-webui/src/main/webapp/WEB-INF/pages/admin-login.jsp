@@ -43,11 +43,11 @@
         <%-- SpringSecurity的提示信息 --%>
         <p>${SPRING_SECURITY_LAST_EXCEPTION.message }</p>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="loginAcct" value="wanghu1" class="form-control" placeholder="请输入登录账号" autofocus>
+            <input type="text" name="loginAcct" class="form-control" placeholder="请输入登录账号" autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="password" name="userPswd" value="5517" class="form-control" placeholder="请输入登录密码" style="margin-top:10px;">
+            <input type="password" name="userPswd" class="form-control" placeholder="请输入登录密码" style="margin-top:10px;">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>

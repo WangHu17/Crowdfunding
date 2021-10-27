@@ -5,6 +5,7 @@ import com.example.crowdfunding.bean.Role;
 import com.example.crowdfunding.service.api.AssignService;
 import com.example.crowdfunding.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +38,7 @@ public class AssignController {
     }
 
     // 响应角色分配请求
+    @PreAuthorize("hasRole('总经理')") // 使用该注解需要在SpringSecurity配置类上启用@EnableGlobalMethodSecurity注解
     @RequestMapping("/admin/do/assignRole.html")
     public String doAssignRole(@RequestParam("adminId") Integer adminId,
                                @RequestParam("pageNum") Integer pageNum,
@@ -63,6 +65,7 @@ public class AssignController {
     }
 
     // 响应权限分配请求
+    @PreAuthorize("hasRole('总经理')") // 使用该注解需要在SpringSecurity配置类上启用@EnableGlobalMethodSecurity注解
     @ResponseBody
     @RequestMapping("/admin/do/assign/auth.json")
     public Msg assignAuths(@RequestBody Map<String, List<Integer>> map) {
