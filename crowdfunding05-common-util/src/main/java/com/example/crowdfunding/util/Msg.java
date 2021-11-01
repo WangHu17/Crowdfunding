@@ -65,4 +65,13 @@ public class Msg {
     public void setData(Map<String, Object> data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Msg{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
