@@ -19,10 +19,22 @@ public class Msg {
         msg.setMsg("处理成功");
         return msg;
     }
+    public static Msg successWithMsg(String successMsg){
+        Msg msg = new Msg();
+        msg.setCode(100);
+        msg.setMsg(successMsg);
+        return msg;
+    }
     public static Msg fail(){
         Msg msg = new Msg();
         msg.setCode(200);
         msg.setMsg("处理失败");
+        return msg;
+    }
+    public static Msg failWithMsg(String errorMsg){
+        Msg msg = new Msg();
+        msg.setCode(200);
+        msg.setMsg(errorMsg);
         return msg;
     }
     public Msg add(String key,Object value){
