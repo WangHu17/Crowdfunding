@@ -6,7 +6,7 @@ spring:
   datasource:
     name: mydb
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/project_crowdfunding?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/project_crowdfunding?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
     username: root
     password: 5517
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,3 +20,6 @@ logging:
   level:
     com.example.crowdfunding.mapper: debug
     com.example.crowdfunding.test: debug
+ribbon:
+  eureka:
+    enabled: true

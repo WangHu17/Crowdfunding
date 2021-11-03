@@ -17,4 +17,5 @@ public class CrowdConstant {
     public static final String MESSAGE_ACCESS_FORBIDDEN = "请先登录";
     public static final String MESSAGE_ACCOUNT_ALREADY_IN_USE = "抱歉，该账号已被使用";
     public static final String MESSAGE_ACCESS_DENIED = "没有权限";
+    public static final String RRDIS_CODE_PREFIX = "RRDIS_CODE_PREFIX_";
 }

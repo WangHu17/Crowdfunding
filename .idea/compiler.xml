@@ -24,29 +24,27 @@
         <module name="crowdfunding04-admin-entity" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="atcrowdfunding01-admin-parent" target="1.7" />
-      <module name="atcrowdfunding02-admin-webui" target="1.7" />
-      <module name="atcrowdfunding03-admin-component" target="1.7" />
-      <module name="atcrowdfunding04-admin-entity" target="1.7" />
-      <module name="atcrowdfunding05-common-util" target="1.5" />
-      <module name="crowdfunding01-admin-parent" target="1.7" />
-      <module name="crowdfunding02-admin-webui" target="1.7" />
-      <module name="crowdfunding03-admin-component" target="1.7" />
-      <module name="crowdfunding04-admin-entity" target="1.7" />
-      <module name="crowdfunding05-common-util" target="7" />
-      <module name="crowdfunding06-common-reverse" target="1.5" />
-      <module name="crowdfunding07-member-parent" target="1.5" />
-      <module name="crowdfunding08-member-eureka" target="1.5" />
-      <module name="crowdfunding09-member-entity" target="7" />
-      <module name="crowdfunding10-member-mysql-provider" target="1.5" />
-      <module name="crowdfunding11-member-redis-provider" target="1.5" />
-      <module name="crowdfunding12-member-authentication-consumer" target="1.5" />
-      <module name="crowdfunding13-member-project-consumer" target="1.5" />
-      <module name="crowdfunding14-member-order-consumer" target="1.5" />
-      <module name="crowdfunding15-member-pay-consumer" target="1.5" />
-      <module name="crowdfunding16-member-zuul" target="1.5" />
-      <module name="crowdfunding17-member-api" target="1.5" />
+    <bytecodeTargetLevel target="8">
+      <module name="crowdfunding01-admin-parent" target="8" />
+      <module name="crowdfunding02-admin-webui" target="8" />
+      <module name="crowdfunding03-admin-component" target="8" />
+      <module name="crowdfunding04-admin-entity" target="8" />
+      <module name="crowdfunding05-common-util" target="8" />
+      <module name="crowdfunding06-common-reverse" target="8" />
+      <module name="crowdfunding07-member-parent" target="8" />
+      <module name="crowdfunding08-member-eureka" target="8" />
+      <module name="crowdfunding09-member-entity" target="8" />
+      <module name="crowdfunding10-member-mysql-provider" target="8" />
+      <module name="crowdfunding11-member-redis-provider" target="8" />
+      <module name="crowdfunding12-member-authentication-consumer" target="8" />
+      <module name="crowdfunding13-member-project-consumer" target="8" />
+      <module name="crowdfunding14-member-order-consumer" target="8" />
+      <module name="crowdfunding15-member-pay-consumer" target="8" />
+      <module name="crowdfunding16-member-zuul" target="8" />
+      <module name="crowdfunding17-member-api" target="8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="PREFER_TARGET_JDK_COMPILER" value="false" />
   </component>
 </project>

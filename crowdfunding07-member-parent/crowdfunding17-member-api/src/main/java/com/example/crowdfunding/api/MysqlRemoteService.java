@@ -1,7 +1,9 @@
 package com.example.crowdfunding.api;
 
+import com.example.crowdfunding.bean.po.MemberPO;
 import com.example.crowdfunding.util.Msg;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface MysqlRemoteService {
 
     @RequestMapping("/get/memberpo/by/loginacct/remote")
-    public Msg getMemberPOByLoginAcctRemote(@RequestParam("loginAcct") String loginAcct);
+    Msg getMemberPOByLoginAcctRemote(@RequestParam("loginAcct") String loginAcct);
+
+    @RequestMapping("/save/memberpo/remote")
+    Msg saveMemberPO(@RequestBody MemberPO memberPO);
 
 }

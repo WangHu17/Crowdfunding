@@ -26,4 +26,9 @@ public class MemberServiceImpl implements MemberService {
         List<MemberPO> members = memberPOMapper.selectByExample(example);
         return members.get(0);
     }
+
+    @Override
+    public void saveMemberPO(MemberPO memberPO) {
+        memberPOMapper.insertSelective(memberPO);
+    }
 }

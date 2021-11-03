@@ -27,7 +27,7 @@ public class CrowdUtil {
      * @param appcode       用来调用第三方短信API的AppCode
      * @param phoneNumber   接收短信的手机号
      * @param sign          签名编号
-     * @param skin          模板签名
+     * @param skin          模板编号
      * @return  成功返回验证码，失败返回失败消息
      */
     public static Msg sendShortMessage(String host, String path, String method, String appcode, String phoneNumber, String sign, String skin) {
@@ -45,7 +45,7 @@ public class CrowdUtil {
             builder.append(num);
         }
         String verificationCode = builder.toString();
-        // 自定义短信内容需要联系客服进行模板报备
+        // 自定义短信内容需要联系客服进行模板报备（【巨头公司】欢迎阁下加入1424巨头股份有限公司，阁下的验证码是：1424，3分钟有效！希望你早日获得巨头名号，称霸9A！）
         querys.put("content", "【创信】你的验证码是：5873，3分钟内有效！");
 
         // 要发送验证码的手机号

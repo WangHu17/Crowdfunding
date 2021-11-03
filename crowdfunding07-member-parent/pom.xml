@@ -24,6 +24,11 @@
     <!-- 配置在父工程中要管理的依赖 -->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </dependency>
             <!-- 导入 SpringCloud 需要使用的依赖信息 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -49,9 +54,23 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
-                <version>1.0.5</version>
+                <version>1.2.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!--maven-compiler-plugin版本-->
+                <configuration>
+                    <source>8</source> <!--jdk版本-->
+                    <target>8</target> <!--jdk版本-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 
 </project>
