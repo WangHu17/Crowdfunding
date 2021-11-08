@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-
+/**
+ * 与数据库对接的 member实体类
+ */
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor

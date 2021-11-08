@@ -37,11 +37,15 @@
             //注册按钮点击事件
             $("#registerBtn").click(function (){
                 $.ajax({
-                    url: "auth/member/register",
+                    url: "auth/member/do/register",
                     type: "POST",
                     data: $(".form-signin").serialize(),
                     success: function (response) {
                         layer.msg(response.msg);
+                        if (response.code === 100){
+                            // 跳转到用户登录页面
+                            window.location.href = "auth/member/to/login/page.html";
+                        }
                     },
                     fail: function (response) {
                         layer.msg(response.status + " " + response.statusText);
@@ -55,7 +59,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <div><a class="navbar-brand" href="index.html" style="font-size:32px;">尚筹网-创意产品众筹平台</a></div>
+            <div><a class="navbar-brand" th:href="@{/}" style="font-size:32px;">尚筹网-创意产品众筹平台</a></div>
         </div>
     </div>
 </nav>
@@ -68,7 +72,7 @@
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="userpswd" class="form-control" placeholder="请输入登录密码" style="margin-top:10px;">
+            <input type="password" name="userpswd" class="form-control" placeholder="请输入登录密码" style="margin-top:10px;">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
@@ -76,11 +80,11 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="email" class="form-control" placeholder="请输入邮箱地址" style="margin-top:10px;">
+            <input type="email" name="email" class="form-control" placeholder="请输入邮箱地址" style="margin-top:10px;">
             <span class="glyphicon glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" name="phoneNumber" class="form-control" placeholder="请输入手机号" style="margin-top:10px;">
+            <input type="number" name="phoneNumber" class="form-control" placeholder="请输入手机号" style="margin-top:10px;">
             <span class="glyphicon glyphicon glyphicon-earphone form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">

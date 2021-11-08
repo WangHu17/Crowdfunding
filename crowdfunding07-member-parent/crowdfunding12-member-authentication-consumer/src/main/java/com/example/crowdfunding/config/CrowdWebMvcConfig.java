@@ -15,11 +15,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CrowdWebMvcConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        // 前台访问地址
-        String urlPath = "auth/member/to/register/page.html";
-        // 目标页面名字
-        String viewName = "register";
-        // 跳转
-        registry.addViewController(urlPath).setViewName(viewName);
+
+        // 跳转到用户注册页面
+        registry.addViewController("auth/member/to/register/page.html").setViewName("register");
+        // 跳转到用户登录页面
+        registry.addViewController("auth/member/to/login/page.html").setViewName("login");
+        // 跳转到用户中心
+        registry.addViewController("auth/member/to/member/center/page.html").setViewName("member-center");
+
     }
 }

@@ -21,7 +21,7 @@ public class MemberProviderController {
     @Autowired
     private MemberService memberService;
 
-    // 通过用户名获取memberPO对象（测试用）
+    // 通过用户名获取memberPO对象
     @RequestMapping("/get/memberpo/by/loginacct/remote")
     public Msg getMemberPOByLoginAcctRemote(@RequestParam("loginAcct") String loginAcct){
         try {

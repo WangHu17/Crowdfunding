@@ -1,8 +1,11 @@
 package com.example.crowdfunding.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.crowdfunding.api.MysqlRemoteService;
 import com.example.crowdfunding.api.RedisRemoteService;
 import com.example.crowdfunding.bean.po.MemberPO;
+import com.example.crowdfunding.bean.vo.MemberLoginVO;
 import com.example.crowdfunding.bean.vo.MemberVO;
 import com.example.crowdfunding.config.ShortMessageProperties;
 import com.example.crowdfunding.constant.CrowdConstant;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -78,7 +82,7 @@ public class PortalController {
 
     // 用户注册
     @ResponseBody
-    @RequestMapping("/auth/member/register")
+    @RequestMapping("/auth/member/do/register")
     public Msg registerMember(MemberVO memberVO){
         // 1、检查redis中是否有手机号对应的验证码
         String phoneNumber = memberVO.getPhoneNumber();
@@ -112,6 +116,46 @@ public class PortalController {
             redisRemoteService.removeRedisKeyRemote(key);
         }
         return saveMemberPOMsg;
+    }
+
+    // 用户登录
+    @ResponseBody
+    @RequestMapping("/auth/member/do/login")
+    public Msg loginMember(@RequestParam("loginacct")String loginacct,
+                           @RequestParam("userpswd")String userpswd,
+                           HttpSession session){
+
+        // 通过用户名向数据库查询
+        Msg memberPOMsg = mysqlRemoteService.getMemberPOByLoginAcctRemote(loginacct);
+        Object memberPOObject = memberPOMsg.getData().get("memberPO");
+        // 如果没有查询到该用户名的记录
+        if (memberPOObject == null) {
+            return Msg.failWithMsg(CrowdConstant.MESSAGE_NO_ADMIN_ACCOUNT);
+        }
+        // 将存入map中的 memberPO 转换回来
+        JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(memberPOObject));
+        MemberPO memberPO = jsonObject.toJavaObject(MemberPO.class);
+        // 该用户名在数据库中的密码
+        String userpswdFromDB = memberPO.getUserpswd();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        // 比较两个密码是否一致（必须使用matches方法进行比较，不能将前端传来的密码加密后再比较）
+        boolean matches = encoder.matches(userpswd,userpswdFromDB);
+        // 如果不一致
+        if (!matches){
+            return Msg.failWithMsg(CrowdConstant.MESSAGE_ACCT_OR_PASSWORD_WRONG);
+        }
+        // 将信息封装到 MemberLoginVO 中
+        MemberLoginVO memberLoginVO = new MemberLoginVO(memberPO.getId(), memberPO.getUsername(), memberPO.getEmail());
+        // 将 MemberLoginVO 保存到 session 中
+        session.setAttribute(CrowdConstant.MEMBER_LOGIN_ACCOUNT,memberLoginVO);
+        return Msg.success();
+    }
+
+    // 用户注销
+    @RequestMapping("/auth/member/logout")
+    public String logoutMember(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
     }
 
 }

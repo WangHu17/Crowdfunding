@@ -4,26 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @author wanghu
- * @discrption： 与前端对接的 member实体类
- * @create 2021-11-03 16:00
+ * @discrption： 用于存放用户登录信息的
+ * @create 2021-11-04 15:50
  */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class MemberVO {
+public class MemberLoginVO implements Serializable {
 
-    private String loginacct;
-
-    private String userpswd;
+    private Integer id;
 
     private String username;
 
     private String email;
-
-    private String phoneNumber;
-
-    private String verificationCode;
 
 }
