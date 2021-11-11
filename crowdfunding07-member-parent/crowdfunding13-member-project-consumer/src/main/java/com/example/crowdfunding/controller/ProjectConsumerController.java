@@ -1,6 +1,7 @@
 package com.example.crowdfunding.controller;
 
 import com.example.crowdfunding.bean.vo.ProjectVO;
+import com.example.crowdfunding.bean.vo.ReturnVO;
 import com.example.crowdfunding.config.OSSProperties;
 import com.example.crowdfunding.util.CrowdUtil;
 import com.example.crowdfunding.util.ResultEntity;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -26,11 +29,65 @@ public class ProjectConsumerController {
     @Autowired
     private OSSProperties ossProperties;
 
-    // 收集项目及发起人信息并存入session中
+    // 收集回报信息
+    @ResponseBody
+    @RequestMapping("/create/return/information")
+    public ResultEntity<String> saveReturn(ReturnVO returnVO, HttpSession session){
+
+        try {
+            // 1、从session中获取到上一步存储的ProjectVO对象
+            ProjectVO projectVO = (ProjectVO) session.getAttribute("ProjectVO");
+            if (projectVO == null) {
+                return ResultEntity.failed("上一步的数据失效！");
+            }
+
+            // 2、从 projectVO 对象中获取存储回报信息的集合
+            List<ReturnVO> returnVOList = projectVO.getReturnVOList();
+            if (returnVOList == null) {
+                // 如果没有集合则创建一个，并设置到projectVO中
+                returnVOList = new ArrayList<>();
+                projectVO.setReturnVOList(returnVOList);
+            }
+
+            // 3、将新增的回报信息添加进集合中
+            returnVOList.add(returnVO);
+
+            // 4、将 ProjectVO 对象重新放入session中以更新数据
+            session.setAttribute("ProjectVO",projectVO);
+
+            // 5、返回
+            return ResultEntity.successWithoutData();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultEntity.failed(e.getMessage());
+        }
+
+    }
+
+    // 上传回报图片到OSS
+    @ResponseBody
+    @RequestMapping("/upload/return/picture")
+    public ResultEntity<String> uploadReturnPicToOSS(@RequestParam("returnPicture")MultipartFile returnPicture) throws IOException {
+
+        return CrowdUtil.uploadFileToOss(ossProperties.getEndPoint(),
+                ossProperties.getAccessKeyId(),
+                ossProperties.getAccessKeySecret(),
+                returnPicture.getInputStream(),
+                ossProperties.getBucketName(),
+                ossProperties.getBucketDomain(),
+                returnPicture.getOriginalFilename());
+
+    }
+
+    // 收集项目及发起人信息并存入session中（第一步）
     @RequestMapping("/create/project/information")
     public String saveProjectInfo(
+            // 普通表单信息
             ProjectVO projectVO,
+            // 头图
             MultipartFile headerPicture,
+            // 详情图
             List<MultipartFile> detailPictureList,
             HttpSession session,
             ModelMap modelMap
