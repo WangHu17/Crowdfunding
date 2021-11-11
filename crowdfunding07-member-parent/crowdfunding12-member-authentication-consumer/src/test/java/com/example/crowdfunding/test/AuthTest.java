@@ -4,11 +4,15 @@ package com.example.crowdfunding.test;
 import com.example.crowdfunding.api.RedisRemoteService;
 import com.example.crowdfunding.util.CrowdUtil;
 import com.example.crowdfunding.util.Msg;
+import com.example.crowdfunding.util.ResultEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * @author wanghu

@@ -11,10 +11,12 @@ import java.io.Serializable;
  * @discrption： 用于存放用户登录信息的
  * @create 2021-11-04 15:50
  */
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class MemberLoginVO implements Serializable {
+
+    private static final long serialVersionUID = -590295444506779334L;
 
     private Integer id;
 

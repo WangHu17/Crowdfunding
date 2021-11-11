@@ -39,15 +39,15 @@ public class CrowdAccessFilter extends ZuulFilter {
 
         HttpServletRequest request = requestContext.getRequest();
 
-        String contextPath = request.getServletPath();
+        String servletPath = request.getServletPath();
 
-        boolean allow = AllowAccessResources.PASS_URL_SET.contains(contextPath);
+        boolean allow = AllowAccessResources.PASS_URL_SET.contains(servletPath);
 
         // 如果是允许访问的资源，放行
         if (allow)return false;
 
         // 如果是静态资源，也放行
-        return !AllowAccessResources.judgeUrlWeatherStaticResource(contextPath);
+        return !AllowAccessResources.judgeUrlWeatherStaticResource(servletPath);
     }
 
     @Override

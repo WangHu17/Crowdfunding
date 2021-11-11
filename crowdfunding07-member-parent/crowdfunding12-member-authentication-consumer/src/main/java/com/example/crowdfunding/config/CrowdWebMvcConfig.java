@@ -22,6 +22,8 @@ public class CrowdWebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("auth/member/to/login/page.html").setViewName("login");
         // 跳转到用户中心
         registry.addViewController("auth/member/to/member/center/page.html").setViewName("member-center");
+        // 跳转到我的众筹
+        registry.addViewController("auth/member/to/my/crowd/page.html").setViewName("my-crowdfunding");
 
     }
 }
