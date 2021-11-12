@@ -8,12 +8,12 @@
     <result column="money" jdbcType="BIGINT" property="money" />
     <result column="DAY" jdbcType="INTEGER" property="day" />
     <result column="STATUS" jdbcType="INTEGER" property="status" />
-    <result column="deploydate" jdbcType="VARCHAR" property="deploydate" />
-    <result column="supportmoney" jdbcType="BIGINT" property="supportmoney" />
+    <result column="deploy_date" jdbcType="VARCHAR" property="deployDate" />
+    <result column="support_money" jdbcType="BIGINT" property="supportMoney" />
     <result column="supporter" jdbcType="INTEGER" property="supporter" />
     <result column="COMPLETION" jdbcType="INTEGER" property="completion" />
-    <result column="memberid" jdbcType="INTEGER" property="memberid" />
-    <result column="createdate" jdbcType="VARCHAR" property="createdate" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="create_date" jdbcType="VARCHAR" property="createDate" />
     <result column="follower" jdbcType="INTEGER" property="follower" />
     <result column="header_picture_path" jdbcType="VARCHAR" property="headerPicturePath" />
   </resultMap>
@@ -76,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, project_name, project_description, money, DAY, STATUS, deploydate, supportmoney, 
-    supporter, COMPLETION, memberid, createdate, follower, header_picture_path
+    id, project_name, project_description, money, DAY, STATUS, deploy_date, support_money, 
+    supporter, COMPLETION, member_id, create_date, follower, header_picture_path
   </sql>
   <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample" resultMap="BaseResultMap">
     select
@@ -112,16 +112,27 @@
   <insert id="insert" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
     insert into t_project (id, project_name, project_description, 
       money, DAY, STATUS, 
-      deploydate, supportmoney, supporter, 
-      COMPLETION, memberid, createdate, 
+      deploy_date, support_money, supporter, 
+      COMPLETION, member_id, create_date, 
       follower, header_picture_path)
     values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectDescription,jdbcType=VARCHAR}, 
       #{money,jdbcType=BIGINT}, #{day,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{deploydate,jdbcType=VARCHAR}, #{supportmoney,jdbcType=BIGINT}, #{supporter,jdbcType=INTEGER}, 
-      #{completion,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{createdate,jdbcType=VARCHAR}, 
+      #{deployDate,jdbcType=VARCHAR}, #{supportMoney,jdbcType=BIGINT}, #{supporter,jdbcType=INTEGER}, 
+      #{completion,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{createDate,jdbcType=VARCHAR}, 
       #{follower,jdbcType=INTEGER}, #{headerPicturePath,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
+<!--  插入项目与分类的信息-->
+  <insert id="insertTypeRelationship">
+    insert into t_project_type(project_id, type_id) values
+    <foreach collection="typeIdList" item="typeId" separator=",">(#{projectId},#{typeId})</foreach>
+  </insert>
+<!--  插入项目与标签的信息-->
+  <insert id="insertTagRelationship">
+    insert into t_project_tag(project_id, tag_id) values
+    <foreach collection="tagIdList" item="tagId" separator=",">(#{projectId},#{tagId})</foreach>
+  </insert>
+<!--  添加返回自增主键-->
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
     insert into t_project
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -142,11 +153,11 @@
       <if test="status != null">
         STATUS,
       </if>
-      <if test="deploydate != null">
-        deploydate,
+      <if test="deployDate != null">
+        deploy_date,
       </if>
-      <if test="supportmoney != null">
-        supportmoney,
+      <if test="supportMoney != null">
+        support_money,
       </if>
       <if test="supporter != null">
         supporter,
@@ -154,11 +165,11 @@
       <if test="completion != null">
         COMPLETION,
       </if>
-      <if test="memberid != null">
-        memberid,
+      <if test="memberId != null">
+        member_id,
       </if>
-      <if test="createdate != null">
-        createdate,
+      <if test="createDate != null">
+        create_date,
       </if>
       <if test="follower != null">
         follower,
@@ -186,11 +197,11 @@
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="deploydate != null">
-        #{deploydate,jdbcType=VARCHAR},
+      <if test="deployDate != null">
+        #{deployDate,jdbcType=VARCHAR},
       </if>
-      <if test="supportmoney != null">
-        #{supportmoney,jdbcType=BIGINT},
+      <if test="supportMoney != null">
+        #{supportMoney,jdbcType=BIGINT},
       </if>
       <if test="supporter != null">
         #{supporter,jdbcType=INTEGER},
@@ -198,11 +209,11 @@
       <if test="completion != null">
         #{completion,jdbcType=INTEGER},
       </if>
-      <if test="memberid != null">
-        #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="createdate != null">
-        #{createdate,jdbcType=VARCHAR},
+      <if test="createDate != null">
+        #{createDate,jdbcType=VARCHAR},
       </if>
       <if test="follower != null">
         #{follower,jdbcType=INTEGER},
@@ -239,11 +250,11 @@
       <if test="record.status != null">
         STATUS = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.deploydate != null">
-        deploydate = #{record.deploydate,jdbcType=VARCHAR},
+      <if test="record.deployDate != null">
+        deploy_date = #{record.deployDate,jdbcType=VARCHAR},
       </if>
-      <if test="record.supportmoney != null">
-        supportmoney = #{record.supportmoney,jdbcType=BIGINT},
+      <if test="record.supportMoney != null">
+        support_money = #{record.supportMoney,jdbcType=BIGINT},
       </if>
       <if test="record.supporter != null">
         supporter = #{record.supporter,jdbcType=INTEGER},
@@ -251,11 +262,11 @@
       <if test="record.completion != null">
         COMPLETION = #{record.completion,jdbcType=INTEGER},
       </if>
-      <if test="record.memberid != null">
-        memberid = #{record.memberid,jdbcType=INTEGER},
+      <if test="record.memberId != null">
+        member_id = #{record.memberId,jdbcType=INTEGER},
       </if>
-      <if test="record.createdate != null">
-        createdate = #{record.createdate,jdbcType=VARCHAR},
+      <if test="record.createDate != null">
+        create_date = #{record.createDate,jdbcType=VARCHAR},
       </if>
       <if test="record.follower != null">
         follower = #{record.follower,jdbcType=INTEGER},
@@ -276,12 +287,12 @@
       money = #{record.money,jdbcType=BIGINT},
       DAY = #{record.day,jdbcType=INTEGER},
       STATUS = #{record.status,jdbcType=INTEGER},
-      deploydate = #{record.deploydate,jdbcType=VARCHAR},
-      supportmoney = #{record.supportmoney,jdbcType=BIGINT},
+      deploy_date = #{record.deployDate,jdbcType=VARCHAR},
+      support_money = #{record.supportMoney,jdbcType=BIGINT},
       supporter = #{record.supporter,jdbcType=INTEGER},
       COMPLETION = #{record.completion,jdbcType=INTEGER},
-      memberid = #{record.memberid,jdbcType=INTEGER},
-      createdate = #{record.createdate,jdbcType=VARCHAR},
+      member_id = #{record.memberId,jdbcType=INTEGER},
+      create_date = #{record.createDate,jdbcType=VARCHAR},
       follower = #{record.follower,jdbcType=INTEGER},
       header_picture_path = #{record.headerPicturePath,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -306,11 +317,11 @@
       <if test="status != null">
         STATUS = #{status,jdbcType=INTEGER},
       </if>
-      <if test="deploydate != null">
-        deploydate = #{deploydate,jdbcType=VARCHAR},
+      <if test="deployDate != null">
+        deploy_date = #{deployDate,jdbcType=VARCHAR},
       </if>
-      <if test="supportmoney != null">
-        supportmoney = #{supportmoney,jdbcType=BIGINT},
+      <if test="supportMoney != null">
+        support_money = #{supportMoney,jdbcType=BIGINT},
       </if>
       <if test="supporter != null">
         supporter = #{supporter,jdbcType=INTEGER},
@@ -318,11 +329,11 @@
       <if test="completion != null">
         COMPLETION = #{completion,jdbcType=INTEGER},
       </if>
-      <if test="memberid != null">
-        memberid = #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="createdate != null">
-        createdate = #{createdate,jdbcType=VARCHAR},
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=VARCHAR},
       </if>
       <if test="follower != null">
         follower = #{follower,jdbcType=INTEGER},
@@ -340,12 +351,12 @@
       money = #{money,jdbcType=BIGINT},
       DAY = #{day,jdbcType=INTEGER},
       STATUS = #{status,jdbcType=INTEGER},
-      deploydate = #{deploydate,jdbcType=VARCHAR},
-      supportmoney = #{supportmoney,jdbcType=BIGINT},
+      deploy_date = #{deployDate,jdbcType=VARCHAR},
+      support_money = #{supportMoney,jdbcType=BIGINT},
       supporter = #{supporter,jdbcType=INTEGER},
       COMPLETION = #{completion,jdbcType=INTEGER},
-      memberid = #{memberid,jdbcType=INTEGER},
-      createdate = #{createdate,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=VARCHAR},
       follower = #{follower,jdbcType=INTEGER},
       header_picture_path = #{headerPicturePath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

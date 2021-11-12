@@ -1,11 +1,13 @@
 package com.example.crowdfunding.mapper;
 
+import java.util.List;
+
 import com.example.crowdfunding.bean.po.ProjectItemPicPO;
 import com.example.crowdfunding.bean.po.ProjectItemPicPOExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
+@Component
 public interface ProjectItemPicPOMapper {
     long countByExample(ProjectItemPicPOExample example);
 
@@ -28,4 +30,6 @@ public interface ProjectItemPicPOMapper {
     int updateByPrimaryKeySelective(ProjectItemPicPO record);
 
     int updateByPrimaryKey(ProjectItemPicPO record);
+
+    void insertItemPicPathList(@Param("projectId") Integer projectId,@Param("detailPicturePathList") List<String> detailPicturePathList);
 }

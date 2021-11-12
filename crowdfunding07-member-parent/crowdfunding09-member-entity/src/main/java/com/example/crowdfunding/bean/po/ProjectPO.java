@@ -13,17 +13,17 @@ public class ProjectPO {
 
     private Integer status;
 
-    private String deploydate;
+    private String deployDate;
 
-    private Long supportmoney;
+    private Long supportMoney;
 
     private Integer supporter;
 
     private Integer completion;
 
-    private Integer memberid;
+    private Integer memberId;
 
-    private String createdate;
+    private String createDate;
 
     private Integer follower;
 
@@ -77,20 +77,20 @@ public class ProjectPO {
         this.status = status;
     }
 
-    public String getDeploydate() {
-        return deploydate;
+    public String getDeployDate() {
+        return deployDate;
     }
 
-    public void setDeploydate(String deploydate) {
-        this.deploydate = deploydate == null ? null : deploydate.trim();
+    public void setDeployDate(String deployDate) {
+        this.deployDate = deployDate == null ? null : deployDate.trim();
     }
 
-    public Long getSupportmoney() {
-        return supportmoney;
+    public Long getSupportMoney() {
+        return supportMoney;
     }
 
-    public void setSupportmoney(Long supportmoney) {
-        this.supportmoney = supportmoney;
+    public void setSupportMoney(Long supportMoney) {
+        this.supportMoney = supportMoney;
     }
 
     public Integer getSupporter() {
@@ -109,20 +109,20 @@ public class ProjectPO {
         this.completion = completion;
     }
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public String getCreatedate() {
-        return createdate;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatedate(String createdate) {
-        this.createdate = createdate == null ? null : createdate.trim();
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate == null ? null : createDate.trim();
     }
 
     public Integer getFollower() {

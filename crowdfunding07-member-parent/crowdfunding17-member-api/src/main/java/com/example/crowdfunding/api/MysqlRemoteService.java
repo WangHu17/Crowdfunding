@@ -1,7 +1,9 @@
 package com.example.crowdfunding.api;
 
 import com.example.crowdfunding.bean.po.MemberPO;
+import com.example.crowdfunding.bean.vo.ProjectVO;
 import com.example.crowdfunding.util.Msg;
+import com.example.crowdfunding.util.ResultEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +22,8 @@ public interface MysqlRemoteService {
 
     @RequestMapping("/save/memberpo/remote")
     Msg saveMemberPO(@RequestBody MemberPO memberPO);
+
+    @RequestMapping("/save/projectvo/remote")
+    ResultEntity<String> saveProjectVORemote(@RequestBody ProjectVO projectVO, @RequestParam("memberId")Integer memberId);
 
 }

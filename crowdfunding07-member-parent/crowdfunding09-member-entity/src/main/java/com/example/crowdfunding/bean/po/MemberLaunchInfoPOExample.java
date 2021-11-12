@@ -164,63 +164,63 @@ public class MemberLaunchInfoPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIsNull() {
-            addCriterion("memberid is null");
+        public Criteria andMemberIdIsNull() {
+            addCriterion("member_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIsNotNull() {
-            addCriterion("memberid is not null");
+        public Criteria andMemberIdIsNotNull() {
+            addCriterion("member_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidEqualTo(Integer value) {
-            addCriterion("memberid =", value, "memberid");
+        public Criteria andMemberIdEqualTo(Integer value) {
+            addCriterion("member_id =", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotEqualTo(Integer value) {
-            addCriterion("memberid <>", value, "memberid");
+        public Criteria andMemberIdNotEqualTo(Integer value) {
+            addCriterion("member_id <>", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidGreaterThan(Integer value) {
-            addCriterion("memberid >", value, "memberid");
+        public Criteria andMemberIdGreaterThan(Integer value) {
+            addCriterion("member_id >", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("memberid >=", value, "memberid");
+        public Criteria andMemberIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("member_id >=", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidLessThan(Integer value) {
-            addCriterion("memberid <", value, "memberid");
+        public Criteria andMemberIdLessThan(Integer value) {
+            addCriterion("member_id <", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidLessThanOrEqualTo(Integer value) {
-            addCriterion("memberid <=", value, "memberid");
+        public Criteria andMemberIdLessThanOrEqualTo(Integer value) {
+            addCriterion("member_id <=", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIn(List<Integer> values) {
-            addCriterion("memberid in", values, "memberid");
+        public Criteria andMemberIdIn(List<Integer> values) {
+            addCriterion("member_id in", values, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotIn(List<Integer> values) {
-            addCriterion("memberid not in", values, "memberid");
+        public Criteria andMemberIdNotIn(List<Integer> values) {
+            addCriterion("member_id not in", values, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidBetween(Integer value1, Integer value2) {
-            addCriterion("memberid between", value1, value2, "memberid");
+        public Criteria andMemberIdBetween(Integer value1, Integer value2) {
+            addCriterion("member_id between", value1, value2, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotBetween(Integer value1, Integer value2) {
-            addCriterion("memberid not between", value1, value2, "memberid");
+        public Criteria andMemberIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("member_id not between", value1, value2, "memberId");
             return (Criteria) this;
         }
 

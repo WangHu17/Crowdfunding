@@ -80,10 +80,12 @@
     <script src="script/docs.min.js"></script>
     <script src="script/back-to-top.js"></script>
     <script>
-        $('#myTab a').click(function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-        })
+        $(function (){
+            $('#myTab a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            })
+        });
     </script>
 </head>
 <body>

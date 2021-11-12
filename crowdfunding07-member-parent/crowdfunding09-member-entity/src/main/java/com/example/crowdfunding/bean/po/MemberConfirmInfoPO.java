@@ -3,11 +3,11 @@ package com.example.crowdfunding.bean.po;
 public class MemberConfirmInfoPO {
     private Integer id;
 
-    private Integer memberid;
+    private Integer memberId;
 
-    private String paynum;
+    private String payNum;
 
-    private String cardnum;
+    private String cardNum;
 
     public Integer getId() {
         return id;
@@ -17,27 +17,27 @@ public class MemberConfirmInfoPO {
         this.id = id;
     }
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
-    public String getPaynum() {
-        return paynum;
+    public String getPayNum() {
+        return payNum;
     }
 
-    public void setPaynum(String paynum) {
-        this.paynum = paynum == null ? null : paynum.trim();
+    public void setPayNum(String payNum) {
+        this.payNum = payNum == null ? null : payNum.trim();
     }
 
-    public String getCardnum() {
-        return cardnum;
+    public String getCardNum() {
+        return cardNum;
     }
 
-    public void setCardnum(String cardnum) {
-        this.cardnum = cardnum == null ? null : cardnum.trim();
+    public void setCardNum(String cardNum) {
+        this.cardNum = cardNum == null ? null : cardNum.trim();
     }
 }

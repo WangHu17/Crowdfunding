@@ -484,133 +484,133 @@ public class ProjectPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateIsNull() {
-            addCriterion("deploydate is null");
+        public Criteria andDeployDateIsNull() {
+            addCriterion("deploy_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateIsNotNull() {
-            addCriterion("deploydate is not null");
+        public Criteria andDeployDateIsNotNull() {
+            addCriterion("deploy_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateEqualTo(String value) {
-            addCriterion("deploydate =", value, "deploydate");
+        public Criteria andDeployDateEqualTo(String value) {
+            addCriterion("deploy_date =", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateNotEqualTo(String value) {
-            addCriterion("deploydate <>", value, "deploydate");
+        public Criteria andDeployDateNotEqualTo(String value) {
+            addCriterion("deploy_date <>", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateGreaterThan(String value) {
-            addCriterion("deploydate >", value, "deploydate");
+        public Criteria andDeployDateGreaterThan(String value) {
+            addCriterion("deploy_date >", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateGreaterThanOrEqualTo(String value) {
-            addCriterion("deploydate >=", value, "deploydate");
+        public Criteria andDeployDateGreaterThanOrEqualTo(String value) {
+            addCriterion("deploy_date >=", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateLessThan(String value) {
-            addCriterion("deploydate <", value, "deploydate");
+        public Criteria andDeployDateLessThan(String value) {
+            addCriterion("deploy_date <", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateLessThanOrEqualTo(String value) {
-            addCriterion("deploydate <=", value, "deploydate");
+        public Criteria andDeployDateLessThanOrEqualTo(String value) {
+            addCriterion("deploy_date <=", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateLike(String value) {
-            addCriterion("deploydate like", value, "deploydate");
+        public Criteria andDeployDateLike(String value) {
+            addCriterion("deploy_date like", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateNotLike(String value) {
-            addCriterion("deploydate not like", value, "deploydate");
+        public Criteria andDeployDateNotLike(String value) {
+            addCriterion("deploy_date not like", value, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateIn(List<String> values) {
-            addCriterion("deploydate in", values, "deploydate");
+        public Criteria andDeployDateIn(List<String> values) {
+            addCriterion("deploy_date in", values, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateNotIn(List<String> values) {
-            addCriterion("deploydate not in", values, "deploydate");
+        public Criteria andDeployDateNotIn(List<String> values) {
+            addCriterion("deploy_date not in", values, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateBetween(String value1, String value2) {
-            addCriterion("deploydate between", value1, value2, "deploydate");
+        public Criteria andDeployDateBetween(String value1, String value2) {
+            addCriterion("deploy_date between", value1, value2, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andDeploydateNotBetween(String value1, String value2) {
-            addCriterion("deploydate not between", value1, value2, "deploydate");
+        public Criteria andDeployDateNotBetween(String value1, String value2) {
+            addCriterion("deploy_date not between", value1, value2, "deployDate");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyIsNull() {
-            addCriterion("supportmoney is null");
+        public Criteria andSupportMoneyIsNull() {
+            addCriterion("support_money is null");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyIsNotNull() {
-            addCriterion("supportmoney is not null");
+        public Criteria andSupportMoneyIsNotNull() {
+            addCriterion("support_money is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyEqualTo(Long value) {
-            addCriterion("supportmoney =", value, "supportmoney");
+        public Criteria andSupportMoneyEqualTo(Long value) {
+            addCriterion("support_money =", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyNotEqualTo(Long value) {
-            addCriterion("supportmoney <>", value, "supportmoney");
+        public Criteria andSupportMoneyNotEqualTo(Long value) {
+            addCriterion("support_money <>", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyGreaterThan(Long value) {
-            addCriterion("supportmoney >", value, "supportmoney");
+        public Criteria andSupportMoneyGreaterThan(Long value) {
+            addCriterion("support_money >", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyGreaterThanOrEqualTo(Long value) {
-            addCriterion("supportmoney >=", value, "supportmoney");
+        public Criteria andSupportMoneyGreaterThanOrEqualTo(Long value) {
+            addCriterion("support_money >=", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyLessThan(Long value) {
-            addCriterion("supportmoney <", value, "supportmoney");
+        public Criteria andSupportMoneyLessThan(Long value) {
+            addCriterion("support_money <", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyLessThanOrEqualTo(Long value) {
-            addCriterion("supportmoney <=", value, "supportmoney");
+        public Criteria andSupportMoneyLessThanOrEqualTo(Long value) {
+            addCriterion("support_money <=", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyIn(List<Long> values) {
-            addCriterion("supportmoney in", values, "supportmoney");
+        public Criteria andSupportMoneyIn(List<Long> values) {
+            addCriterion("support_money in", values, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyNotIn(List<Long> values) {
-            addCriterion("supportmoney not in", values, "supportmoney");
+        public Criteria andSupportMoneyNotIn(List<Long> values) {
+            addCriterion("support_money not in", values, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyBetween(Long value1, Long value2) {
-            addCriterion("supportmoney between", value1, value2, "supportmoney");
+        public Criteria andSupportMoneyBetween(Long value1, Long value2) {
+            addCriterion("support_money between", value1, value2, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyNotBetween(Long value1, Long value2) {
-            addCriterion("supportmoney not between", value1, value2, "supportmoney");
+        public Criteria andSupportMoneyNotBetween(Long value1, Long value2) {
+            addCriterion("support_money not between", value1, value2, "supportMoney");
             return (Criteria) this;
         }
 
@@ -734,133 +734,133 @@ public class ProjectPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIsNull() {
-            addCriterion("memberid is null");
+        public Criteria andMemberIdIsNull() {
+            addCriterion("member_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIsNotNull() {
-            addCriterion("memberid is not null");
+        public Criteria andMemberIdIsNotNull() {
+            addCriterion("member_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidEqualTo(Integer value) {
-            addCriterion("memberid =", value, "memberid");
+        public Criteria andMemberIdEqualTo(Integer value) {
+            addCriterion("member_id =", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotEqualTo(Integer value) {
-            addCriterion("memberid <>", value, "memberid");
+        public Criteria andMemberIdNotEqualTo(Integer value) {
+            addCriterion("member_id <>", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidGreaterThan(Integer value) {
-            addCriterion("memberid >", value, "memberid");
+        public Criteria andMemberIdGreaterThan(Integer value) {
+            addCriterion("member_id >", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("memberid >=", value, "memberid");
+        public Criteria andMemberIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("member_id >=", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidLessThan(Integer value) {
-            addCriterion("memberid <", value, "memberid");
+        public Criteria andMemberIdLessThan(Integer value) {
+            addCriterion("member_id <", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidLessThanOrEqualTo(Integer value) {
-            addCriterion("memberid <=", value, "memberid");
+        public Criteria andMemberIdLessThanOrEqualTo(Integer value) {
+            addCriterion("member_id <=", value, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidIn(List<Integer> values) {
-            addCriterion("memberid in", values, "memberid");
+        public Criteria andMemberIdIn(List<Integer> values) {
+            addCriterion("member_id in", values, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotIn(List<Integer> values) {
-            addCriterion("memberid not in", values, "memberid");
+        public Criteria andMemberIdNotIn(List<Integer> values) {
+            addCriterion("member_id not in", values, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidBetween(Integer value1, Integer value2) {
-            addCriterion("memberid between", value1, value2, "memberid");
+        public Criteria andMemberIdBetween(Integer value1, Integer value2) {
+            addCriterion("member_id between", value1, value2, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andMemberidNotBetween(Integer value1, Integer value2) {
-            addCriterion("memberid not between", value1, value2, "memberid");
+        public Criteria andMemberIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("member_id not between", value1, value2, "memberId");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateIsNull() {
-            addCriterion("createdate is null");
+        public Criteria andCreateDateIsNull() {
+            addCriterion("create_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateIsNotNull() {
-            addCriterion("createdate is not null");
+        public Criteria andCreateDateIsNotNull() {
+            addCriterion("create_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateEqualTo(String value) {
-            addCriterion("createdate =", value, "createdate");
+        public Criteria andCreateDateEqualTo(String value) {
+            addCriterion("create_date =", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateNotEqualTo(String value) {
-            addCriterion("createdate <>", value, "createdate");
+        public Criteria andCreateDateNotEqualTo(String value) {
+            addCriterion("create_date <>", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateGreaterThan(String value) {
-            addCriterion("createdate >", value, "createdate");
+        public Criteria andCreateDateGreaterThan(String value) {
+            addCriterion("create_date >", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateGreaterThanOrEqualTo(String value) {
-            addCriterion("createdate >=", value, "createdate");
+        public Criteria andCreateDateGreaterThanOrEqualTo(String value) {
+            addCriterion("create_date >=", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateLessThan(String value) {
-            addCriterion("createdate <", value, "createdate");
+        public Criteria andCreateDateLessThan(String value) {
+            addCriterion("create_date <", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateLessThanOrEqualTo(String value) {
-            addCriterion("createdate <=", value, "createdate");
+        public Criteria andCreateDateLessThanOrEqualTo(String value) {
+            addCriterion("create_date <=", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateLike(String value) {
-            addCriterion("createdate like", value, "createdate");
+        public Criteria andCreateDateLike(String value) {
+            addCriterion("create_date like", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateNotLike(String value) {
-            addCriterion("createdate not like", value, "createdate");
+        public Criteria andCreateDateNotLike(String value) {
+            addCriterion("create_date not like", value, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateIn(List<String> values) {
-            addCriterion("createdate in", values, "createdate");
+        public Criteria andCreateDateIn(List<String> values) {
+            addCriterion("create_date in", values, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateNotIn(List<String> values) {
-            addCriterion("createdate not in", values, "createdate");
+        public Criteria andCreateDateNotIn(List<String> values) {
+            addCriterion("create_date not in", values, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateBetween(String value1, String value2) {
-            addCriterion("createdate between", value1, value2, "createdate");
+        public Criteria andCreateDateBetween(String value1, String value2) {
+            addCriterion("create_date between", value1, value2, "createDate");
             return (Criteria) this;
         }
 
-        public Criteria andCreatedateNotBetween(String value1, String value2) {
-            addCriterion("createdate not between", value1, value2, "createdate");
+        public Criteria andCreateDateNotBetween(String value1, String value2) {
+            addCriterion("create_date not between", value1, value2, "createDate");
             return (Criteria) this;
         }
 

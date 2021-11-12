@@ -3,9 +3,9 @@
 <mapper namespace="com.example.crowdfunding.mapper.MemberConfirmInfoPOMapper">
   <resultMap id="BaseResultMap" type="com.example.crowdfunding.bean.po.MemberConfirmInfoPO">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="memberid" jdbcType="INTEGER" property="memberid" />
-    <result column="paynum" jdbcType="VARCHAR" property="paynum" />
-    <result column="cardnum" jdbcType="VARCHAR" property="cardnum" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="pay_num" jdbcType="VARCHAR" property="payNum" />
+    <result column="card_num" jdbcType="VARCHAR" property="cardNum" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, memberid, paynum, cardnum
+    id, member_id, pay_num, card_num
   </sql>
   <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.MemberConfirmInfoPOExample" resultMap="BaseResultMap">
     select
@@ -99,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.crowdfunding.bean.po.MemberConfirmInfoPO">
-    insert into t_member_confirm_info (id, memberid, paynum, 
-      cardnum)
-    values (#{id,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{paynum,jdbcType=VARCHAR}, 
-      #{cardnum,jdbcType=VARCHAR})
+    insert into t_member_confirm_info (id, member_id, pay_num, 
+      card_num)
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{payNum,jdbcType=VARCHAR}, 
+      #{cardNum,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.crowdfunding.bean.po.MemberConfirmInfoPO">
     insert into t_member_confirm_info
@@ -110,28 +110,28 @@
       <if test="id != null">
         id,
       </if>
-      <if test="memberid != null">
-        memberid,
+      <if test="memberId != null">
+        member_id,
       </if>
-      <if test="paynum != null">
-        paynum,
+      <if test="payNum != null">
+        pay_num,
       </if>
-      <if test="cardnum != null">
-        cardnum,
+      <if test="cardNum != null">
+        card_num,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="memberid != null">
-        #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="paynum != null">
-        #{paynum,jdbcType=VARCHAR},
+      <if test="payNum != null">
+        #{payNum,jdbcType=VARCHAR},
       </if>
-      <if test="cardnum != null">
-        #{cardnum,jdbcType=VARCHAR},
+      <if test="cardNum != null">
+        #{cardNum,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -147,14 +147,14 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.memberid != null">
-        memberid = #{record.memberid,jdbcType=INTEGER},
+      <if test="record.memberId != null">
+        member_id = #{record.memberId,jdbcType=INTEGER},
       </if>
-      <if test="record.paynum != null">
-        paynum = #{record.paynum,jdbcType=VARCHAR},
+      <if test="record.payNum != null">
+        pay_num = #{record.payNum,jdbcType=VARCHAR},
       </if>
-      <if test="record.cardnum != null">
-        cardnum = #{record.cardnum,jdbcType=VARCHAR},
+      <if test="record.cardNum != null">
+        card_num = #{record.cardNum,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -164,9 +164,9 @@
   <update id="updateByExample" parameterType="map">
     update t_member_confirm_info
     set id = #{record.id,jdbcType=INTEGER},
-      memberid = #{record.memberid,jdbcType=INTEGER},
-      paynum = #{record.paynum,jdbcType=VARCHAR},
-      cardnum = #{record.cardnum,jdbcType=VARCHAR}
+      member_id = #{record.memberId,jdbcType=INTEGER},
+      pay_num = #{record.payNum,jdbcType=VARCHAR},
+      card_num = #{record.cardNum,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -174,23 +174,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.crowdfunding.bean.po.MemberConfirmInfoPO">
     update t_member_confirm_info
     <set>
-      <if test="memberid != null">
-        memberid = #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="paynum != null">
-        paynum = #{paynum,jdbcType=VARCHAR},
+      <if test="payNum != null">
+        pay_num = #{payNum,jdbcType=VARCHAR},
       </if>
-      <if test="cardnum != null">
-        cardnum = #{cardnum,jdbcType=VARCHAR},
+      <if test="cardNum != null">
+        card_num = #{cardNum,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.crowdfunding.bean.po.MemberConfirmInfoPO">
     update t_member_confirm_info
-    set memberid = #{memberid,jdbcType=INTEGER},
-      paynum = #{paynum,jdbcType=VARCHAR},
-      cardnum = #{cardnum,jdbcType=VARCHAR}
+    set member_id = #{memberId,jdbcType=INTEGER},
+      pay_num = #{payNum,jdbcType=VARCHAR},
+      card_num = #{cardNum,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

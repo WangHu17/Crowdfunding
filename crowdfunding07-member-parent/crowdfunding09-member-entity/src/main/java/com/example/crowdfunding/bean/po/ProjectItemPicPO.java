@@ -3,7 +3,7 @@ package com.example.crowdfunding.bean.po;
 public class ProjectItemPicPO {
     private Integer id;
 
-    private Integer projectid;
+    private Integer projectId;
 
     private String itemPicPath;
 
@@ -15,12 +15,12 @@ public class ProjectItemPicPO {
         this.id = id;
     }
 
-    public Integer getProjectid() {
-        return projectid;
+    public Integer getProjectId() {
+        return projectId;
     }
 
-    public void setProjectid(Integer projectid) {
-        this.projectid = projectid;
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
     }
 
     public String getItemPicPath() {

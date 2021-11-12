@@ -3,7 +3,7 @@
 <mapper namespace="com.example.crowdfunding.mapper.MemberLaunchInfoPOMapper">
   <resultMap id="BaseResultMap" type="com.example.crowdfunding.bean.po.MemberLaunchInfoPO">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="memberid" jdbcType="INTEGER" property="memberid" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
     <result column="description_simple" jdbcType="VARCHAR" property="descriptionSimple" />
     <result column="description_detail" jdbcType="VARCHAR" property="descriptionDetail" />
     <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, memberid, description_simple, description_detail, phone_num, service_num
+    id, member_id, description_simple, description_detail, phone_num, service_num
   </sql>
   <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.MemberLaunchInfoPOExample" resultMap="BaseResultMap">
     select
@@ -101,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.crowdfunding.bean.po.MemberLaunchInfoPO">
-    insert into t_member_launch_info (id, memberid, description_simple, 
+    insert into t_member_launch_info (id, member_id, description_simple, 
       description_detail, phone_num, service_num
       )
-    values (#{id,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{descriptionSimple,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{descriptionSimple,jdbcType=VARCHAR}, 
       #{descriptionDetail,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{serviceNum,jdbcType=VARCHAR}
       )
   </insert>
@@ -114,8 +114,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="memberid != null">
-        memberid,
+      <if test="memberId != null">
+        member_id,
       </if>
       <if test="descriptionSimple != null">
         description_simple,
@@ -134,8 +134,8 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="memberid != null">
-        #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
       </if>
       <if test="descriptionSimple != null">
         #{descriptionSimple,jdbcType=VARCHAR},
@@ -163,8 +163,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.memberid != null">
-        memberid = #{record.memberid,jdbcType=INTEGER},
+      <if test="record.memberId != null">
+        member_id = #{record.memberId,jdbcType=INTEGER},
       </if>
       <if test="record.descriptionSimple != null">
         description_simple = #{record.descriptionSimple,jdbcType=VARCHAR},
@@ -186,7 +186,7 @@
   <update id="updateByExample" parameterType="map">
     update t_member_launch_info
     set id = #{record.id,jdbcType=INTEGER},
-      memberid = #{record.memberid,jdbcType=INTEGER},
+      member_id = #{record.memberId,jdbcType=INTEGER},
       description_simple = #{record.descriptionSimple,jdbcType=VARCHAR},
       description_detail = #{record.descriptionDetail,jdbcType=VARCHAR},
       phone_num = #{record.phoneNum,jdbcType=VARCHAR},
@@ -198,8 +198,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.crowdfunding.bean.po.MemberLaunchInfoPO">
     update t_member_launch_info
     <set>
-      <if test="memberid != null">
-        memberid = #{memberid,jdbcType=INTEGER},
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=INTEGER},
       </if>
       <if test="descriptionSimple != null">
         description_simple = #{descriptionSimple,jdbcType=VARCHAR},
@@ -218,7 +218,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.crowdfunding.bean.po.MemberLaunchInfoPO">
     update t_member_launch_info
-    set memberid = #{memberid,jdbcType=INTEGER},
+    set member_id = #{memberId,jdbcType=INTEGER},
       description_simple = #{descriptionSimple,jdbcType=VARCHAR},
       description_detail = #{descriptionDetail,jdbcType=VARCHAR},
       phone_num = #{phoneNum,jdbcType=VARCHAR},

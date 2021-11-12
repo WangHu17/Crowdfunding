@@ -1,8 +1,12 @@
 package com.example.crowdfunding.controller;
 
+import com.example.crowdfunding.api.MysqlRemoteService;
+import com.example.crowdfunding.bean.vo.MemberConfirmInfoVO;
+import com.example.crowdfunding.bean.vo.MemberLoginVO;
 import com.example.crowdfunding.bean.vo.ProjectVO;
 import com.example.crowdfunding.bean.vo.ReturnVO;
 import com.example.crowdfunding.config.OSSProperties;
+import com.example.crowdfunding.constant.CrowdConstant;
 import com.example.crowdfunding.util.CrowdUtil;
 import com.example.crowdfunding.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +33,44 @@ public class ProjectConsumerController {
     @Autowired
     private OSSProperties ossProperties;
 
+    @Autowired
+    private MysqlRemoteService mysqlRemoteService;
+
+    // 收集确认信息，并将 ProjectVO 提交到数据库
+    @RequestMapping("/create/confirm")
+    public String confirm(MemberConfirmInfoVO confirmInfoVO, HttpSession session, ModelMap modelMap) {
+
+        // 1、从session中获取上一步存储的ProjectVO对象
+        ProjectVO projectVO = (ProjectVO) session.getAttribute("ProjectVO");
+        if (projectVO == null) {
+            modelMap.addAttribute("message","上一步的数据失效！");
+            return "project_confirm";
+        }
+
+        // 2、将确认信息放入 ProjectVO 中
+        projectVO.setMemberConfirmInfoVO(confirmInfoVO);
+
+        // 3、从session中获取用户账号id
+        MemberLoginVO loginMember = (MemberLoginVO) session.getAttribute(CrowdConstant.MEMBER_LOGIN_ACCOUNT);
+        Integer memberId = loginMember.getId();
+
+        // 4、调用远程方法将 ProjectVO 对象存入数据库
+        ResultEntity<String> resultEntity = mysqlRemoteService.saveProjectVORemote(projectVO, memberId);
+        String result = resultEntity.getResult();
+        if (ResultEntity.FAILED.equals(result)){
+            // 如果存储失败
+            modelMap.addAttribute("message",resultEntity.getMessage());
+            return "project_confirm";
+        }
+
+        // 5、存储成功就移除session中的ProjectVO对象
+        session.removeAttribute("ProjectVO");
+
+        // 6、跳转到完成页面
+        return "redirect:http://localhost/project/finish/page.html";
+
+    }
+
     // 收集回报信息
     @ResponseBody
     @RequestMapping("/create/return/information")
@@ -48,7 +90,7 @@ public class ProjectConsumerController {
                 returnVOList = new ArrayList<>();
                 projectVO.setReturnVOList(returnVOList);
             }
-
+            System.out.println("returnVO："+returnVO);
             // 3、将新增的回报信息添加进集合中
             returnVOList.add(returnVO);
 
@@ -176,7 +218,7 @@ public class ProjectConsumerController {
         projectVO.setDetailPicturePathList(detailPicturePathList);
 
         // 三、将ProjectVO存入session中并跳转到下一步页面
-        session.setAttribute("projectVO",projectVO);
+        session.setAttribute("ProjectVO",projectVO);
 
         return "redirect:http://localhost/project/return/info/page.html";
 

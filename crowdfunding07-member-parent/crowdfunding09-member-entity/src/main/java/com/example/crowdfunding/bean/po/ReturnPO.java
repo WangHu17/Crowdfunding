@@ -3,17 +3,17 @@ package com.example.crowdfunding.bean.po;
 public class ReturnPO {
     private Integer id;
 
-    private Integer projectid;
+    private Integer projectId;
 
     private Integer type;
 
-    private Integer supportmoney;
+    private Integer supportMoney;
 
     private String content;
 
     private Integer count;
 
-    private Integer signalpurchase;
+    private Integer signalPurchase;
 
     private Integer purchase;
 
@@ -21,9 +21,9 @@ public class ReturnPO {
 
     private Integer invoice;
 
-    private Integer returndate;
+    private Integer returnDate;
 
-    private String describPicPath;
+    private String describePicPath;
 
     public Integer getId() {
         return id;
@@ -33,12 +33,12 @@ public class ReturnPO {
         this.id = id;
     }
 
-    public Integer getProjectid() {
-        return projectid;
+    public Integer getProjectId() {
+        return projectId;
     }
 
-    public void setProjectid(Integer projectid) {
-        this.projectid = projectid;
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
     }
 
     public Integer getType() {
@@ -49,12 +49,12 @@ public class ReturnPO {
         this.type = type;
     }
 
-    public Integer getSupportmoney() {
-        return supportmoney;
+    public Integer getSupportMoney() {
+        return supportMoney;
     }
 
-    public void setSupportmoney(Integer supportmoney) {
-        this.supportmoney = supportmoney;
+    public void setSupportMoney(Integer supportMoney) {
+        this.supportMoney = supportMoney;
     }
 
     public String getContent() {
@@ -73,12 +73,12 @@ public class ReturnPO {
         this.count = count;
     }
 
-    public Integer getSignalpurchase() {
-        return signalpurchase;
+    public Integer getSignalPurchase() {
+        return signalPurchase;
     }
 
-    public void setSignalpurchase(Integer signalpurchase) {
-        this.signalpurchase = signalpurchase;
+    public void setSignalPurchase(Integer signalPurchase) {
+        this.signalPurchase = signalPurchase;
     }
 
     public Integer getPurchase() {
@@ -105,19 +105,37 @@ public class ReturnPO {
         this.invoice = invoice;
     }
 
-    public Integer getReturndate() {
-        return returndate;
+    public Integer getReturnDate() {
+        return returnDate;
     }
 
-    public void setReturndate(Integer returndate) {
-        this.returndate = returndate;
+    public void setReturnDate(Integer returnDate) {
+        this.returnDate = returnDate;
     }
 
-    public String getDescribPicPath() {
-        return describPicPath;
+    public String getDescribePicPath() {
+        return describePicPath;
     }
 
-    public void setDescribPicPath(String describPicPath) {
-        this.describPicPath = describPicPath == null ? null : describPicPath.trim();
+    public void setDescribePicPath(String describePicPath) {
+        this.describePicPath = describePicPath == null ? null : describePicPath.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "ReturnPO{" +
+                "id=" + id +
+                ", projectId=" + projectId +
+                ", type=" + type +
+                ", supportMoney=" + supportMoney +
+                ", content='" + content + '\'' +
+                ", count=" + count +
+                ", signalPurchase=" + signalPurchase +
+                ", purchase=" + purchase +
+                ", freight=" + freight +
+                ", invoice=" + invoice +
+                ", returnDate=" + returnDate +
+                ", describePicPath='" + describePicPath + '\'' +
+                '}';
     }
 }

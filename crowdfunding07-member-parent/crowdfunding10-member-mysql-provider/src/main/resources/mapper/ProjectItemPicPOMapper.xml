@@ -3,7 +3,7 @@
 <mapper namespace="com.example.crowdfunding.mapper.ProjectItemPicPOMapper">
   <resultMap id="BaseResultMap" type="com.example.crowdfunding.bean.po.ProjectItemPicPO">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="projectid" jdbcType="INTEGER" property="projectid" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
     <result column="item_pic_path" jdbcType="VARCHAR" property="itemPicPath" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, projectid, item_pic_path
+    id, project_id, item_pic_path
   </sql>
   <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.ProjectItemPicPOExample" resultMap="BaseResultMap">
     select
@@ -98,9 +98,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.crowdfunding.bean.po.ProjectItemPicPO">
-    insert into t_project_item_pic (id, projectid, item_pic_path
+    insert into t_project_item_pic (id, project_id, item_pic_path
       )
-    values (#{id,jdbcType=INTEGER}, #{projectid,jdbcType=INTEGER}, #{itemPicPath,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{itemPicPath,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.crowdfunding.bean.po.ProjectItemPicPO">
@@ -109,8 +109,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="projectid != null">
-        projectid,
+      <if test="projectId != null">
+        project_id,
       </if>
       <if test="itemPicPath != null">
         item_pic_path,
@@ -120,13 +120,18 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="projectid != null">
-        #{projectid,jdbcType=INTEGER},
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
       </if>
       <if test="itemPicPath != null">
         #{itemPicPath,jdbcType=VARCHAR},
       </if>
     </trim>
+  </insert>
+<!--  插入项目详情图路径信息-->
+  <insert id="insertItemPicPathList">
+    insert into t_project_item_pic(project_id, item_pic_path) values
+    <foreach collection="detailPicturePathList" item="detailPicturePath" separator=",">(#{projectId},#{detailPicturePath})</foreach>
   </insert>
   <select id="countByExample" parameterType="com.example.crowdfunding.bean.po.ProjectItemPicPOExample" resultType="java.lang.Long">
     select count(*) from t_project_item_pic
@@ -140,8 +145,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.projectid != null">
-        projectid = #{record.projectid,jdbcType=INTEGER},
+      <if test="record.projectId != null">
+        project_id = #{record.projectId,jdbcType=INTEGER},
       </if>
       <if test="record.itemPicPath != null">
         item_pic_path = #{record.itemPicPath,jdbcType=VARCHAR},
@@ -154,7 +159,7 @@
   <update id="updateByExample" parameterType="map">
     update t_project_item_pic
     set id = #{record.id,jdbcType=INTEGER},
-      projectid = #{record.projectid,jdbcType=INTEGER},
+      project_id = #{record.projectId,jdbcType=INTEGER},
       item_pic_path = #{record.itemPicPath,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -163,8 +168,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.crowdfunding.bean.po.ProjectItemPicPO">
     update t_project_item_pic
     <set>
-      <if test="projectid != null">
-        projectid = #{projectid,jdbcType=INTEGER},
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=INTEGER},
       </if>
       <if test="itemPicPath != null">
         item_pic_path = #{itemPicPath,jdbcType=VARCHAR},
@@ -174,7 +179,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.crowdfunding.bean.po.ProjectItemPicPO">
     update t_project_item_pic
-    set projectid = #{projectid,jdbcType=INTEGER},
+    set project_id = #{projectId,jdbcType=INTEGER},
       item_pic_path = #{itemPicPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

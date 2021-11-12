@@ -3,17 +3,17 @@
 <mapper namespace="com.example.crowdfunding.mapper.ReturnPOMapper">
   <resultMap id="BaseResultMap" type="com.example.crowdfunding.bean.po.ReturnPO">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="projectid" jdbcType="INTEGER" property="projectid" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
     <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="supportmoney" jdbcType="INTEGER" property="supportmoney" />
+    <result column="support_money" jdbcType="INTEGER" property="supportMoney" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="count" jdbcType="INTEGER" property="count" />
-    <result column="signalpurchase" jdbcType="INTEGER" property="signalpurchase" />
+    <result column="signal_purchase" jdbcType="INTEGER" property="signalPurchase" />
     <result column="purchase" jdbcType="INTEGER" property="purchase" />
     <result column="freight" jdbcType="INTEGER" property="freight" />
     <result column="invoice" jdbcType="INTEGER" property="invoice" />
-    <result column="returndate" jdbcType="INTEGER" property="returndate" />
-    <result column="describ_pic_path" jdbcType="VARCHAR" property="describPicPath" />
+    <result column="return_date" jdbcType="INTEGER" property="returnDate" />
+    <result column="describe_pic_path" jdbcType="VARCHAR" property="describePicPath" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, projectid, type, supportmoney, content, count, signalpurchase, purchase, freight, 
-    invoice, returndate, describ_pic_path
+    id, project_id, type, support_money, content, count, signal_purchase, purchase, freight, 
+    invoice, return_date, describe_pic_path
   </sql>
   <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.ReturnPOExample" resultMap="BaseResultMap">
     select
@@ -107,16 +107,45 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+<!--  插入回报信息-->
+  <insert id="insertReturnPOList">
+    insert into t_return (project_id,
+                          type,
+                          support_money,
+                          content,
+                          count,
+                          signal_purchase,
+                          purchase,
+                          freight,
+                          invoice,
+                          return_date,
+                          describe_pic_path
+    )
+    values
+    <foreach collection="returnPOList" item="returnPO" separator=",">(
+        #{projectId},
+        #{returnPO.type},
+        #{returnPO.supportMoney},
+        #{returnPO.content},
+        #{returnPO.count},
+        #{returnPO.signalPurchase},
+        #{returnPO.purchase},
+        #{returnPO.freight},
+        #{returnPO.invoice},
+        #{returnPO.returnDate},
+        #{returnPO.describePicPath}
+      )</foreach>
+  </insert>
   <insert id="insert" parameterType="com.example.crowdfunding.bean.po.ReturnPO">
-    insert into t_return (id, projectid, type, 
-      supportmoney, content, count, 
-      signalpurchase, purchase, freight, 
-      invoice, returndate, describ_pic_path
+    insert into t_return (id, project_id, type, 
+      support_money, content, count, 
+      signal_purchase, purchase, freight, 
+      invoice, return_date, describe_pic_path
       )
-    values (#{id,jdbcType=INTEGER}, #{projectid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
-      #{supportmoney,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
-      #{signalpurchase,jdbcType=INTEGER}, #{purchase,jdbcType=INTEGER}, #{freight,jdbcType=INTEGER}, 
-      #{invoice,jdbcType=INTEGER}, #{returndate,jdbcType=INTEGER}, #{describPicPath,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{supportMoney,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
+      #{signalPurchase,jdbcType=INTEGER}, #{purchase,jdbcType=INTEGER}, #{freight,jdbcType=INTEGER}, 
+      #{invoice,jdbcType=INTEGER}, #{returnDate,jdbcType=INTEGER}, #{describePicPath,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.crowdfunding.bean.po.ReturnPO">
@@ -125,14 +154,14 @@
       <if test="id != null">
         id,
       </if>
-      <if test="projectid != null">
-        projectid,
+      <if test="projectId != null">
+        project_id,
       </if>
       <if test="type != null">
         type,
       </if>
-      <if test="supportmoney != null">
-        supportmoney,
+      <if test="supportMoney != null">
+        support_money,
       </if>
       <if test="content != null">
         content,
@@ -140,8 +169,8 @@
       <if test="count != null">
         count,
       </if>
-      <if test="signalpurchase != null">
-        signalpurchase,
+      <if test="signalPurchase != null">
+        signal_purchase,
       </if>
       <if test="purchase != null">
         purchase,
@@ -152,25 +181,25 @@
       <if test="invoice != null">
         invoice,
       </if>
-      <if test="returndate != null">
-        returndate,
+      <if test="returnDate != null">
+        return_date,
       </if>
-      <if test="describPicPath != null">
-        describ_pic_path,
+      <if test="describePicPath != null">
+        describe_pic_path,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="projectid != null">
-        #{projectid,jdbcType=INTEGER},
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
       </if>
       <if test="type != null">
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="supportmoney != null">
-        #{supportmoney,jdbcType=INTEGER},
+      <if test="supportMoney != null">
+        #{supportMoney,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
@@ -178,8 +207,8 @@
       <if test="count != null">
         #{count,jdbcType=INTEGER},
       </if>
-      <if test="signalpurchase != null">
-        #{signalpurchase,jdbcType=INTEGER},
+      <if test="signalPurchase != null">
+        #{signalPurchase,jdbcType=INTEGER},
       </if>
       <if test="purchase != null">
         #{purchase,jdbcType=INTEGER},
@@ -190,11 +219,11 @@
       <if test="invoice != null">
         #{invoice,jdbcType=INTEGER},
       </if>
-      <if test="returndate != null">
-        #{returndate,jdbcType=INTEGER},
+      <if test="returnDate != null">
+        #{returnDate,jdbcType=INTEGER},
       </if>
-      <if test="describPicPath != null">
-        #{describPicPath,jdbcType=VARCHAR},
+      <if test="describePicPath != null">
+        #{describePicPath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -210,14 +239,14 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.projectid != null">
-        projectid = #{record.projectid,jdbcType=INTEGER},
+      <if test="record.projectId != null">
+        project_id = #{record.projectId,jdbcType=INTEGER},
       </if>
       <if test="record.type != null">
         type = #{record.type,jdbcType=INTEGER},
       </if>
-      <if test="record.supportmoney != null">
-        supportmoney = #{record.supportmoney,jdbcType=INTEGER},
+      <if test="record.supportMoney != null">
+        support_money = #{record.supportMoney,jdbcType=INTEGER},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
@@ -225,8 +254,8 @@
       <if test="record.count != null">
         count = #{record.count,jdbcType=INTEGER},
       </if>
-      <if test="record.signalpurchase != null">
-        signalpurchase = #{record.signalpurchase,jdbcType=INTEGER},
+      <if test="record.signalPurchase != null">
+        signal_purchase = #{record.signalPurchase,jdbcType=INTEGER},
       </if>
       <if test="record.purchase != null">
         purchase = #{record.purchase,jdbcType=INTEGER},
@@ -237,11 +266,11 @@
       <if test="record.invoice != null">
         invoice = #{record.invoice,jdbcType=INTEGER},
       </if>
-      <if test="record.returndate != null">
-        returndate = #{record.returndate,jdbcType=INTEGER},
+      <if test="record.returnDate != null">
+        return_date = #{record.returnDate,jdbcType=INTEGER},
       </if>
-      <if test="record.describPicPath != null">
-        describ_pic_path = #{record.describPicPath,jdbcType=VARCHAR},
+      <if test="record.describePicPath != null">
+        describe_pic_path = #{record.describePicPath,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -251,17 +280,17 @@
   <update id="updateByExample" parameterType="map">
     update t_return
     set id = #{record.id,jdbcType=INTEGER},
-      projectid = #{record.projectid,jdbcType=INTEGER},
+      project_id = #{record.projectId,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER},
-      supportmoney = #{record.supportmoney,jdbcType=INTEGER},
+      support_money = #{record.supportMoney,jdbcType=INTEGER},
       content = #{record.content,jdbcType=VARCHAR},
       count = #{record.count,jdbcType=INTEGER},
-      signalpurchase = #{record.signalpurchase,jdbcType=INTEGER},
+      signal_purchase = #{record.signalPurchase,jdbcType=INTEGER},
       purchase = #{record.purchase,jdbcType=INTEGER},
       freight = #{record.freight,jdbcType=INTEGER},
       invoice = #{record.invoice,jdbcType=INTEGER},
-      returndate = #{record.returndate,jdbcType=INTEGER},
-      describ_pic_path = #{record.describPicPath,jdbcType=VARCHAR}
+      return_date = #{record.returnDate,jdbcType=INTEGER},
+      describe_pic_path = #{record.describePicPath,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -269,14 +298,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.crowdfunding.bean.po.ReturnPO">
     update t_return
     <set>
-      <if test="projectid != null">
-        projectid = #{projectid,jdbcType=INTEGER},
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=INTEGER},
       </if>
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="supportmoney != null">
-        supportmoney = #{supportmoney,jdbcType=INTEGER},
+      <if test="supportMoney != null">
+        support_money = #{supportMoney,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
@@ -284,8 +313,8 @@
       <if test="count != null">
         count = #{count,jdbcType=INTEGER},
       </if>
-      <if test="signalpurchase != null">
-        signalpurchase = #{signalpurchase,jdbcType=INTEGER},
+      <if test="signalPurchase != null">
+        signal_purchase = #{signalPurchase,jdbcType=INTEGER},
       </if>
       <if test="purchase != null">
         purchase = #{purchase,jdbcType=INTEGER},
@@ -296,28 +325,28 @@
       <if test="invoice != null">
         invoice = #{invoice,jdbcType=INTEGER},
       </if>
-      <if test="returndate != null">
-        returndate = #{returndate,jdbcType=INTEGER},
+      <if test="returnDate != null">
+        return_date = #{returnDate,jdbcType=INTEGER},
       </if>
-      <if test="describPicPath != null">
-        describ_pic_path = #{describPicPath,jdbcType=VARCHAR},
+      <if test="describePicPath != null">
+        describe_pic_path = #{describePicPath,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.crowdfunding.bean.po.ReturnPO">
     update t_return
-    set projectid = #{projectid,jdbcType=INTEGER},
+    set project_id = #{projectId,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
-      supportmoney = #{supportmoney,jdbcType=INTEGER},
+      support_money = #{supportMoney,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       count = #{count,jdbcType=INTEGER},
-      signalpurchase = #{signalpurchase,jdbcType=INTEGER},
+      signal_purchase = #{signalPurchase,jdbcType=INTEGER},
       purchase = #{purchase,jdbcType=INTEGER},
       freight = #{freight,jdbcType=INTEGER},
       invoice = #{invoice,jdbcType=INTEGER},
-      returndate = #{returndate,jdbcType=INTEGER},
-      describ_pic_path = #{describPicPath,jdbcType=VARCHAR}
+      return_date = #{returnDate,jdbcType=INTEGER},
+      describe_pic_path = #{describePicPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,10 +1,10 @@
 package com.example.crowdfunding.mapper;
 
+import java.util.List;
+
 import com.example.crowdfunding.bean.po.TypePO;
 import com.example.crowdfunding.bean.po.TypePOExample;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 public interface TypePOMapper {
     long countByExample(TypePOExample example);

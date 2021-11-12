@@ -164,63 +164,63 @@ public class ReturnPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andProjectidIsNull() {
-            addCriterion("projectid is null");
+        public Criteria andProjectIdIsNull() {
+            addCriterion("project_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidIsNotNull() {
-            addCriterion("projectid is not null");
+        public Criteria andProjectIdIsNotNull() {
+            addCriterion("project_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidEqualTo(Integer value) {
-            addCriterion("projectid =", value, "projectid");
+        public Criteria andProjectIdEqualTo(Integer value) {
+            addCriterion("project_id =", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidNotEqualTo(Integer value) {
-            addCriterion("projectid <>", value, "projectid");
+        public Criteria andProjectIdNotEqualTo(Integer value) {
+            addCriterion("project_id <>", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidGreaterThan(Integer value) {
-            addCriterion("projectid >", value, "projectid");
+        public Criteria andProjectIdGreaterThan(Integer value) {
+            addCriterion("project_id >", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("projectid >=", value, "projectid");
+        public Criteria andProjectIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("project_id >=", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidLessThan(Integer value) {
-            addCriterion("projectid <", value, "projectid");
+        public Criteria andProjectIdLessThan(Integer value) {
+            addCriterion("project_id <", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidLessThanOrEqualTo(Integer value) {
-            addCriterion("projectid <=", value, "projectid");
+        public Criteria andProjectIdLessThanOrEqualTo(Integer value) {
+            addCriterion("project_id <=", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidIn(List<Integer> values) {
-            addCriterion("projectid in", values, "projectid");
+        public Criteria andProjectIdIn(List<Integer> values) {
+            addCriterion("project_id in", values, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidNotIn(List<Integer> values) {
-            addCriterion("projectid not in", values, "projectid");
+        public Criteria andProjectIdNotIn(List<Integer> values) {
+            addCriterion("project_id not in", values, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidBetween(Integer value1, Integer value2) {
-            addCriterion("projectid between", value1, value2, "projectid");
+        public Criteria andProjectIdBetween(Integer value1, Integer value2) {
+            addCriterion("project_id between", value1, value2, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andProjectidNotBetween(Integer value1, Integer value2) {
-            addCriterion("projectid not between", value1, value2, "projectid");
+        public Criteria andProjectIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("project_id not between", value1, value2, "projectId");
             return (Criteria) this;
         }
 
@@ -284,63 +284,63 @@ public class ReturnPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyIsNull() {
-            addCriterion("supportmoney is null");
+        public Criteria andSupportMoneyIsNull() {
+            addCriterion("support_money is null");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyIsNotNull() {
-            addCriterion("supportmoney is not null");
+        public Criteria andSupportMoneyIsNotNull() {
+            addCriterion("support_money is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyEqualTo(Integer value) {
-            addCriterion("supportmoney =", value, "supportmoney");
+        public Criteria andSupportMoneyEqualTo(Integer value) {
+            addCriterion("support_money =", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyNotEqualTo(Integer value) {
-            addCriterion("supportmoney <>", value, "supportmoney");
+        public Criteria andSupportMoneyNotEqualTo(Integer value) {
+            addCriterion("support_money <>", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyGreaterThan(Integer value) {
-            addCriterion("supportmoney >", value, "supportmoney");
+        public Criteria andSupportMoneyGreaterThan(Integer value) {
+            addCriterion("support_money >", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("supportmoney >=", value, "supportmoney");
+        public Criteria andSupportMoneyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("support_money >=", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyLessThan(Integer value) {
-            addCriterion("supportmoney <", value, "supportmoney");
+        public Criteria andSupportMoneyLessThan(Integer value) {
+            addCriterion("support_money <", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyLessThanOrEqualTo(Integer value) {
-            addCriterion("supportmoney <=", value, "supportmoney");
+        public Criteria andSupportMoneyLessThanOrEqualTo(Integer value) {
+            addCriterion("support_money <=", value, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyIn(List<Integer> values) {
-            addCriterion("supportmoney in", values, "supportmoney");
+        public Criteria andSupportMoneyIn(List<Integer> values) {
+            addCriterion("support_money in", values, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyNotIn(List<Integer> values) {
-            addCriterion("supportmoney not in", values, "supportmoney");
+        public Criteria andSupportMoneyNotIn(List<Integer> values) {
+            addCriterion("support_money not in", values, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyBetween(Integer value1, Integer value2) {
-            addCriterion("supportmoney between", value1, value2, "supportmoney");
+        public Criteria andSupportMoneyBetween(Integer value1, Integer value2) {
+            addCriterion("support_money between", value1, value2, "supportMoney");
             return (Criteria) this;
         }
 
-        public Criteria andSupportmoneyNotBetween(Integer value1, Integer value2) {
-            addCriterion("supportmoney not between", value1, value2, "supportmoney");
+        public Criteria andSupportMoneyNotBetween(Integer value1, Integer value2) {
+            addCriterion("support_money not between", value1, value2, "supportMoney");
             return (Criteria) this;
         }
 
@@ -474,63 +474,63 @@ public class ReturnPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseIsNull() {
-            addCriterion("signalpurchase is null");
+        public Criteria andSignalPurchaseIsNull() {
+            addCriterion("signal_purchase is null");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseIsNotNull() {
-            addCriterion("signalpurchase is not null");
+        public Criteria andSignalPurchaseIsNotNull() {
+            addCriterion("signal_purchase is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseEqualTo(Integer value) {
-            addCriterion("signalpurchase =", value, "signalpurchase");
+        public Criteria andSignalPurchaseEqualTo(Integer value) {
+            addCriterion("signal_purchase =", value, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseNotEqualTo(Integer value) {
-            addCriterion("signalpurchase <>", value, "signalpurchase");
+        public Criteria andSignalPurchaseNotEqualTo(Integer value) {
+            addCriterion("signal_purchase <>", value, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseGreaterThan(Integer value) {
-            addCriterion("signalpurchase >", value, "signalpurchase");
+        public Criteria andSignalPurchaseGreaterThan(Integer value) {
+            addCriterion("signal_purchase >", value, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseGreaterThanOrEqualTo(Integer value) {
-            addCriterion("signalpurchase >=", value, "signalpurchase");
+        public Criteria andSignalPurchaseGreaterThanOrEqualTo(Integer value) {
+            addCriterion("signal_purchase >=", value, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseLessThan(Integer value) {
-            addCriterion("signalpurchase <", value, "signalpurchase");
+        public Criteria andSignalPurchaseLessThan(Integer value) {
+            addCriterion("signal_purchase <", value, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseLessThanOrEqualTo(Integer value) {
-            addCriterion("signalpurchase <=", value, "signalpurchase");
+        public Criteria andSignalPurchaseLessThanOrEqualTo(Integer value) {
+            addCriterion("signal_purchase <=", value, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseIn(List<Integer> values) {
-            addCriterion("signalpurchase in", values, "signalpurchase");
+        public Criteria andSignalPurchaseIn(List<Integer> values) {
+            addCriterion("signal_purchase in", values, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseNotIn(List<Integer> values) {
-            addCriterion("signalpurchase not in", values, "signalpurchase");
+        public Criteria andSignalPurchaseNotIn(List<Integer> values) {
+            addCriterion("signal_purchase not in", values, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseBetween(Integer value1, Integer value2) {
-            addCriterion("signalpurchase between", value1, value2, "signalpurchase");
+        public Criteria andSignalPurchaseBetween(Integer value1, Integer value2) {
+            addCriterion("signal_purchase between", value1, value2, "signalPurchase");
             return (Criteria) this;
         }
 
-        public Criteria andSignalpurchaseNotBetween(Integer value1, Integer value2) {
-            addCriterion("signalpurchase not between", value1, value2, "signalpurchase");
+        public Criteria andSignalPurchaseNotBetween(Integer value1, Integer value2) {
+            addCriterion("signal_purchase not between", value1, value2, "signalPurchase");
             return (Criteria) this;
         }
 
@@ -714,63 +714,63 @@ public class ReturnPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andReturndateIsNull() {
-            addCriterion("returndate is null");
+        public Criteria andReturnDateIsNull() {
+            addCriterion("return_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateIsNotNull() {
-            addCriterion("returndate is not null");
+        public Criteria andReturnDateIsNotNull() {
+            addCriterion("return_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateEqualTo(Integer value) {
-            addCriterion("returndate =", value, "returndate");
+        public Criteria andReturnDateEqualTo(Integer value) {
+            addCriterion("return_date =", value, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateNotEqualTo(Integer value) {
-            addCriterion("returndate <>", value, "returndate");
+        public Criteria andReturnDateNotEqualTo(Integer value) {
+            addCriterion("return_date <>", value, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateGreaterThan(Integer value) {
-            addCriterion("returndate >", value, "returndate");
+        public Criteria andReturnDateGreaterThan(Integer value) {
+            addCriterion("return_date >", value, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateGreaterThanOrEqualTo(Integer value) {
-            addCriterion("returndate >=", value, "returndate");
+        public Criteria andReturnDateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("return_date >=", value, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateLessThan(Integer value) {
-            addCriterion("returndate <", value, "returndate");
+        public Criteria andReturnDateLessThan(Integer value) {
+            addCriterion("return_date <", value, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateLessThanOrEqualTo(Integer value) {
-            addCriterion("returndate <=", value, "returndate");
+        public Criteria andReturnDateLessThanOrEqualTo(Integer value) {
+            addCriterion("return_date <=", value, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateIn(List<Integer> values) {
-            addCriterion("returndate in", values, "returndate");
+        public Criteria andReturnDateIn(List<Integer> values) {
+            addCriterion("return_date in", values, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateNotIn(List<Integer> values) {
-            addCriterion("returndate not in", values, "returndate");
+        public Criteria andReturnDateNotIn(List<Integer> values) {
+            addCriterion("return_date not in", values, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateBetween(Integer value1, Integer value2) {
-            addCriterion("returndate between", value1, value2, "returndate");
+        public Criteria andReturnDateBetween(Integer value1, Integer value2) {
+            addCriterion("return_date between", value1, value2, "returnDate");
             return (Criteria) this;
         }
 
-        public Criteria andReturndateNotBetween(Integer value1, Integer value2) {
-            addCriterion("returndate not between", value1, value2, "returndate");
+        public Criteria andReturnDateNotBetween(Integer value1, Integer value2) {
+            addCriterion("return_date not between", value1, value2, "returnDate");
             return (Criteria) this;
         }
 

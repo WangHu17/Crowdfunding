@@ -1,11 +1,14 @@
 package com.example.crowdfunding.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.crowdfunding.bean.po.ReturnPO;
 import com.example.crowdfunding.bean.po.ReturnPOExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
+@Component
 public interface ReturnPOMapper {
     long countByExample(ReturnPOExample example);
 
@@ -28,4 +31,6 @@ public interface ReturnPOMapper {
     int updateByPrimaryKeySelective(ReturnPO record);
 
     int updateByPrimaryKey(ReturnPO record);
+
+    void insertReturnPOList(@Param("projectId") Integer projectId,@Param("returnPOList") ArrayList<ReturnPO> returnPOList);
 }

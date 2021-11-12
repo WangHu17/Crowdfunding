@@ -1,11 +1,13 @@
 package com.example.crowdfunding.mapper;
 
+import java.util.List;
+
 import com.example.crowdfunding.bean.po.ProjectPO;
 import com.example.crowdfunding.bean.po.ProjectPOExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
+@Component
 public interface ProjectPOMapper {
     long countByExample(ProjectPOExample example);
 
@@ -28,4 +30,8 @@ public interface ProjectPOMapper {
     int updateByPrimaryKeySelective(ProjectPO record);
 
     int updateByPrimaryKey(ProjectPO record);
+
+    void insertTypeRelationship(@Param("projectId") Integer projectId,@Param("typeIdList") List<Integer> typeIdList);
+
+    void insertTagRelationship(@Param("projectId") Integer projectId,@Param("tagIdList") List<Integer> tagIdList);
 }

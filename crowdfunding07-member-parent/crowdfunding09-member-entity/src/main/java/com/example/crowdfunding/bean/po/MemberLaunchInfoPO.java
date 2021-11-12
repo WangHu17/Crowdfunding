@@ -3,7 +3,7 @@ package com.example.crowdfunding.bean.po;
 public class MemberLaunchInfoPO {
     private Integer id;
 
-    private Integer memberid;
+    private Integer memberId;
 
     private String descriptionSimple;
 
@@ -21,12 +21,12 @@ public class MemberLaunchInfoPO {
         this.id = id;
     }
 
-    public Integer getMemberid() {
-        return memberid;
+    public Integer getMemberId() {
+        return memberId;
     }
 
-    public void setMemberid(Integer memberid) {
-        this.memberid = memberid;
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
     }
 
     public String getDescriptionSimple() {

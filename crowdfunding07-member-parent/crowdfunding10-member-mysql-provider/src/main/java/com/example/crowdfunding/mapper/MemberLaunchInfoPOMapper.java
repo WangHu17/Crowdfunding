@@ -1,11 +1,13 @@
 package com.example.crowdfunding.mapper;
 
+import java.util.List;
+
 import com.example.crowdfunding.bean.po.MemberLaunchInfoPO;
 import com.example.crowdfunding.bean.po.MemberLaunchInfoPOExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
+@Component
 public interface MemberLaunchInfoPOMapper {
     long countByExample(MemberLaunchInfoPOExample example);
 
