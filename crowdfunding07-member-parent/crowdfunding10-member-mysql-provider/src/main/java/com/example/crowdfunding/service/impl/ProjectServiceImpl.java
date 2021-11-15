@@ -4,10 +4,7 @@ import com.example.crowdfunding.bean.po.MemberConfirmInfoPO;
 import com.example.crowdfunding.bean.po.MemberLaunchInfoPO;
 import com.example.crowdfunding.bean.po.ProjectPO;
 import com.example.crowdfunding.bean.po.ReturnPO;
-import com.example.crowdfunding.bean.vo.MemberConfirmInfoVO;
-import com.example.crowdfunding.bean.vo.MemberLauchInfoVO;
-import com.example.crowdfunding.bean.vo.ProjectVO;
-import com.example.crowdfunding.bean.vo.ReturnVO;
+import com.example.crowdfunding.bean.vo.*;
 import com.example.crowdfunding.mapper.*;
 import com.example.crowdfunding.service.api.ProjectService;
 import org.springframework.beans.BeanUtils;
@@ -95,6 +92,11 @@ public class ProjectServiceImpl implements ProjectService {
         memberConfirmInfoPO.setMemberId(memberId);
         memberConfirmInfoPOMapper.insert(memberConfirmInfoPO);
 
+    }
+
+    @Override
+    public List<PortalTypeVO> getPortalTypeList() {
+        return projectPOMapper.selectPortalTypeList();
     }
 
 }

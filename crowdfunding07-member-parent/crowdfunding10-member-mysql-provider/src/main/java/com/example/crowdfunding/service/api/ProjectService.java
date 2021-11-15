@@ -1,6 +1,9 @@
 package com.example.crowdfunding.service.api;
 
+import com.example.crowdfunding.bean.vo.PortalTypeVO;
 import com.example.crowdfunding.bean.vo.ProjectVO;
+
+import java.util.List;
 
 /**
  * @author wanghu
@@ -10,5 +13,7 @@ import com.example.crowdfunding.bean.vo.ProjectVO;
 public interface ProjectService {
 
     void saveProjectVO(ProjectVO projectVO, Integer memberId);
+
+    List<PortalTypeVO> getPortalTypeList();
 
 }

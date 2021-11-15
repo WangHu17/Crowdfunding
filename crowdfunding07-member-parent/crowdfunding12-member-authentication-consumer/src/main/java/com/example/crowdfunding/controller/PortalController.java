@@ -7,19 +7,23 @@ import com.example.crowdfunding.api.RedisRemoteService;
 import com.example.crowdfunding.bean.po.MemberPO;
 import com.example.crowdfunding.bean.vo.MemberLoginVO;
 import com.example.crowdfunding.bean.vo.MemberVO;
+import com.example.crowdfunding.bean.vo.PortalTypeVO;
 import com.example.crowdfunding.config.ShortMessageProperties;
 import com.example.crowdfunding.constant.CrowdConstant;
 import com.example.crowdfunding.util.CrowdUtil;
 import com.example.crowdfunding.util.Msg;
+import com.example.crowdfunding.util.ResultEntity;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -39,9 +43,23 @@ public class PortalController {
     @Autowired
     private MysqlRemoteService mysqlRemoteService;
 
+//    @RequestMapping("/portal/project/detail/#{id}")
+//    public String showProjectDetail() {
+//        return "";
+//    }
+
     // 跳转首页
     @RequestMapping("/")
-    public String showPortalPage() {
+    public String showPortalPage(ModelMap modelMap) {
+
+        // 获取首页显示的分类及其项目的数据
+        ResultEntity<List<PortalTypeVO>> resultEntity = mysqlRemoteService.getPortalTypeProjectRemote();
+        String result = resultEntity.getResult();
+        if (ResultEntity.SUCCESS.equals(result)){
+            List<PortalTypeVO> portalTypeVOList = resultEntity.getData();
+            modelMap.addAttribute("portalData", portalTypeVOList);
+        }
+
         return "portal";
     }
 

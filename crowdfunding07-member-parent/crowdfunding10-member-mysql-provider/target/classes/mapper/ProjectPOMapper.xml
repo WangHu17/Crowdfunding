@@ -17,6 +17,14 @@
     <result column="follower" jdbcType="INTEGER" property="follower" />
     <result column="header_picture_path" jdbcType="VARCHAR" property="headerPicturePath" />
   </resultMap>
+<!--  首页显示的分类及其项目的resultMap-->
+  <resultMap id="PortalTypeResultMap" type="com.example.crowdfunding.bean.vo.PortalTypeVO">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="remark" property="remark"/>
+    <collection property="PortalProjectVOList" column="id" ofType="com.example.crowdfunding.bean.vo.PortalProjectVO"
+                select="selectPortalProjectList"/>
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -79,6 +87,26 @@
     id, project_name, project_description, money, DAY, STATUS, deploy_date, support_money, 
     supporter, COMPLETION, member_id, create_date, follower, header_picture_path
   </sql>
+<!--  查询分类-->
+  <select id="selectPortalTypeList" resultMap="PortalTypeResultMap">
+    select id,name,remark from t_type
+  </select>
+<!--  根据分类id查询首页项目信息-->
+  <select id="selectPortalProjectList" resultType="com.example.crowdfunding.bean.vo.PortalProjectVO">
+    select t_project.id projectId,
+           project_name projectName,
+           header_picture_path headerPicturePath,
+           money,
+           deploy_date deployDate,
+           support_money/money*100 percentage,
+           supporter
+    from t_project
+    left join t_project_type
+    on t_project.id=t_project_type.project_id
+    where type_id=#{id}
+    order by t_project.id desc
+    limit 0,4
+  </select>
   <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

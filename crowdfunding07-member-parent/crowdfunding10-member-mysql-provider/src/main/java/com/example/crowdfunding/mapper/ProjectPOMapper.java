@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.crowdfunding.bean.po.ProjectPO;
 import com.example.crowdfunding.bean.po.ProjectPOExample;
+import com.example.crowdfunding.bean.vo.PortalTypeVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,8 @@ public interface ProjectPOMapper {
     int insert(ProjectPO record);
 
     int insertSelective(ProjectPO record);
+
+    List<PortalTypeVO> selectPortalTypeList();
 
     List<ProjectPO> selectByExample(ProjectPOExample example);
 
