@@ -1,7 +1,9 @@
 package com.example.crowdfunding.test;
 
 import com.example.crowdfunding.bean.po.MemberPO;
+import com.example.crowdfunding.bean.vo.ProjectDetailVO;
 import com.example.crowdfunding.mapper.MemberPOMapper;
+import com.example.crowdfunding.mapper.ProjectPOMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,7 +32,16 @@ public class MybatisTest {
     @Autowired
     private MemberPOMapper memberPOMapper;
 
+    @Autowired
+    private ProjectPOMapper projectPOMapper;
+
     private Logger logger = LoggerFactory.getLogger(MybatisTest.class);
+
+    @Test
+    public void testProjectDetail(){
+        ProjectDetailVO projectDetailVO = projectPOMapper.selectProjectDetailByProjectId(12);
+        System.out.println(projectDetailVO.toString());
+    }
 
     @Test
     public void testMybatis() {

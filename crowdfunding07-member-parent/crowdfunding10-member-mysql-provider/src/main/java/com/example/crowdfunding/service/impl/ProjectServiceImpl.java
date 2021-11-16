@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -97,6 +98,45 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<PortalTypeVO> getPortalTypeList() {
         return projectPOMapper.selectPortalTypeList();
+    }
+
+    @Override
+    public ProjectDetailVO getProjectDetail(Integer id) {
+
+        ProjectDetailVO projectDetailVO = projectPOMapper.selectProjectDetailByProjectId(id);
+        // 设置项目众筹状态
+        Integer status = projectDetailVO.getStatus();
+        switch (status) {
+            case 0:
+                projectDetailVO.setStatusText("审核中");
+                break;
+            case 1:
+                projectDetailVO.setStatusText("众筹中");
+                break;
+            case 2:
+                projectDetailVO.setStatusText("众筹成功");
+                break;
+            case 3:
+                projectDetailVO.setStatusText("已关闭");
+                break;
+            default:
+                break;
+        }
+        // 设置项目众筹的剩余天数
+        String deployDate = projectDetailVO.getDeployDate();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date deployDay = format.parse(deployDate);
+            Date currentDay = new Date();
+            long pastDays = (currentDay.getTime()-deployDay.getTime())/1000/60/60/24;
+            Integer day = projectDetailVO.getDay();
+            Integer lastDays = (int)(day - pastDays);
+            projectDetailVO.setLastDays(lastDays);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return projectDetailVO;
     }
 
 }

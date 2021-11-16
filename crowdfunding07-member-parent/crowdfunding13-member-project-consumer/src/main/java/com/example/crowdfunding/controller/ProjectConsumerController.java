@@ -1,10 +1,7 @@
 package com.example.crowdfunding.controller;
 
 import com.example.crowdfunding.api.MysqlRemoteService;
-import com.example.crowdfunding.bean.vo.MemberConfirmInfoVO;
-import com.example.crowdfunding.bean.vo.MemberLoginVO;
-import com.example.crowdfunding.bean.vo.ProjectVO;
-import com.example.crowdfunding.bean.vo.ReturnVO;
+import com.example.crowdfunding.bean.vo.*;
 import com.example.crowdfunding.config.OSSProperties;
 import com.example.crowdfunding.constant.CrowdConstant;
 import com.example.crowdfunding.util.CrowdUtil;
@@ -12,6 +9,7 @@ import com.example.crowdfunding.util.ResultEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,6 +33,17 @@ public class ProjectConsumerController {
 
     @Autowired
     private MysqlRemoteService mysqlRemoteService;
+
+    // 获取项目详情信息
+    @RequestMapping("/get/project/detail/{id}")
+    public String getProjectDetail(@PathVariable("id")Integer projectId, ModelMap modelMap) {
+        ResultEntity<ProjectDetailVO> resultEntity = mysqlRemoteService.getProjectDetailVORemote(projectId);
+        if (ResultEntity.SUCCESS.equals(resultEntity.getResult())){
+            ProjectDetailVO projectDetail = resultEntity.getData();
+            modelMap.addAttribute("projectDetail",projectDetail);
+        }
+        return "project-detail";
+    }
 
     // 收集确认信息，并将 ProjectVO 提交到数据库
     @RequestMapping("/create/confirm")

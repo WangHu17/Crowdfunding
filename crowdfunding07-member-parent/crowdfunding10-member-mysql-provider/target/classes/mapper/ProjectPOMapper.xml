@@ -1,392 +1,452 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.crowdfunding.mapper.ProjectPOMapper">
-  <resultMap id="BaseResultMap" type="com.example.crowdfunding.bean.po.ProjectPO">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
-    <result column="project_description" jdbcType="VARCHAR" property="projectDescription" />
-    <result column="money" jdbcType="BIGINT" property="money" />
-    <result column="DAY" jdbcType="INTEGER" property="day" />
-    <result column="STATUS" jdbcType="INTEGER" property="status" />
-    <result column="deploy_date" jdbcType="VARCHAR" property="deployDate" />
-    <result column="support_money" jdbcType="BIGINT" property="supportMoney" />
-    <result column="supporter" jdbcType="INTEGER" property="supporter" />
-    <result column="COMPLETION" jdbcType="INTEGER" property="completion" />
-    <result column="member_id" jdbcType="INTEGER" property="memberId" />
-    <result column="create_date" jdbcType="VARCHAR" property="createDate" />
-    <result column="follower" jdbcType="INTEGER" property="follower" />
-    <result column="header_picture_path" jdbcType="VARCHAR" property="headerPicturePath" />
-  </resultMap>
-<!--  首页显示的分类及其项目的resultMap-->
-  <resultMap id="PortalTypeResultMap" type="com.example.crowdfunding.bean.vo.PortalTypeVO">
-    <id column="id" property="id"/>
-    <result column="name" property="name"/>
-    <result column="remark" property="remark"/>
-    <collection property="PortalProjectVOList" column="id" ofType="com.example.crowdfunding.bean.vo.PortalProjectVO"
-                select="selectPortalProjectList"/>
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.example.crowdfunding.bean.po.ProjectPO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="project_description" jdbcType="VARCHAR" property="projectDescription"/>
+        <result column="money" jdbcType="BIGINT" property="money"/>
+        <result column="DAY" jdbcType="INTEGER" property="day"/>
+        <result column="STATUS" jdbcType="INTEGER" property="status"/>
+        <result column="deploy_date" jdbcType="VARCHAR" property="deployDate"/>
+        <result column="support_money" jdbcType="BIGINT" property="supportMoney"/>
+        <result column="supporter" jdbcType="INTEGER" property="supporter"/>
+        <result column="COMPLETION" jdbcType="INTEGER" property="completion"/>
+        <result column="member_id" jdbcType="INTEGER" property="memberId"/>
+        <result column="create_date" jdbcType="VARCHAR" property="createDate"/>
+        <result column="follower" jdbcType="INTEGER" property="follower"/>
+        <result column="header_picture_path" jdbcType="VARCHAR" property="headerPicturePath"/>
+    </resultMap>
+    <!--  首页显示的分类及其项目的resultMap-->
+    <resultMap id="PortalTypeResultMap" type="com.example.crowdfunding.bean.vo.PortalTypeVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
+        <collection property="PortalProjectVOList" column="id" ofType="com.example.crowdfunding.bean.vo.PortalProjectVO"
+                    select="selectPortalProjectList"/>
+    </resultMap>
+    <!--  项目详情页的resultMap-->
+    <resultMap id="ProjectDetailResultMap" type="com.example.crowdfunding.bean.vo.ProjectDetailVO">
+        <id column="id" property="id"/>
+        <result column="project_name" property="projectName"/>
+        <result column="project_description" property="projectDescription"/>
+        <result column="money" property="money"/>
+        <result column="day" property="day"/>
+        <result column="status" property="status"/>
+        <result column="deploy_date" property="deployDate"/>
+        <result column="support_money" property="supportMoney"/>
+        <result column="supporter" property="supporterCount"/>
+        <result column="follower" property="followerCount"/>
+        <result column="header_picture_path" property="headerPicturePath"/>
+        <collection property="detailPicturePathList" column="id" select="selectProjectDetailPicturePath"/>
+        <collection property="ReturnDetailVOList" column="id" select="selectReturnList"/>
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    id, project_name, project_description, money, DAY, STATUS, deploy_date, support_money, 
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        id
+        , project_name, project_description, money, DAY, STATUS, deploy_date, support_money, 
     supporter, COMPLETION, member_id, create_date, follower, header_picture_path
-  </sql>
-<!--  查询分类-->
-  <select id="selectPortalTypeList" resultMap="PortalTypeResultMap">
-    select id,name,remark from t_type
-  </select>
-<!--  根据分类id查询首页项目信息-->
-  <select id="selectPortalProjectList" resultType="com.example.crowdfunding.bean.vo.PortalProjectVO">
-    select t_project.id projectId,
-           project_name projectName,
-           header_picture_path headerPicturePath,
-           money,
-           deploy_date deployDate,
-           support_money/money*100 percentage,
-           supporter
-    from t_project
-    left join t_project_type
-    on t_project.id=t_project_type.project_id
-    where type_id=#{id}
-    order by t_project.id desc
-    limit 0,4
-  </select>
-  <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from t_project
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_project
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_project
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample">
-    delete from t_project
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
-    insert into t_project (id, project_name, project_description, 
-      money, DAY, STATUS, 
-      deploy_date, support_money, supporter, 
-      COMPLETION, member_id, create_date, 
-      follower, header_picture_path)
-    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectDescription,jdbcType=VARCHAR}, 
-      #{money,jdbcType=BIGINT}, #{day,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{deployDate,jdbcType=VARCHAR}, #{supportMoney,jdbcType=BIGINT}, #{supporter,jdbcType=INTEGER}, 
-      #{completion,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{createDate,jdbcType=VARCHAR}, 
-      #{follower,jdbcType=INTEGER}, #{headerPicturePath,jdbcType=VARCHAR})
-  </insert>
-<!--  插入项目与分类的信息-->
-  <insert id="insertTypeRelationship">
-    insert into t_project_type(project_id, type_id) values
-    <foreach collection="typeIdList" item="typeId" separator=",">(#{projectId},#{typeId})</foreach>
-  </insert>
-<!--  插入项目与标签的信息-->
-  <insert id="insertTagRelationship">
-    insert into t_project_tag(project_id, tag_id) values
-    <foreach collection="tagIdList" item="tagId" separator=",">(#{projectId},#{tagId})</foreach>
-  </insert>
-<!--  添加返回自增主键-->
-  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
-    insert into t_project
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="projectName != null">
-        project_name,
-      </if>
-      <if test="projectDescription != null">
-        project_description,
-      </if>
-      <if test="money != null">
-        money,
-      </if>
-      <if test="day != null">
-        DAY,
-      </if>
-      <if test="status != null">
-        STATUS,
-      </if>
-      <if test="deployDate != null">
-        deploy_date,
-      </if>
-      <if test="supportMoney != null">
-        support_money,
-      </if>
-      <if test="supporter != null">
-        supporter,
-      </if>
-      <if test="completion != null">
-        COMPLETION,
-      </if>
-      <if test="memberId != null">
-        member_id,
-      </if>
-      <if test="createDate != null">
-        create_date,
-      </if>
-      <if test="follower != null">
-        follower,
-      </if>
-      <if test="headerPicturePath != null">
-        header_picture_path,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="projectName != null">
-        #{projectName,jdbcType=VARCHAR},
-      </if>
-      <if test="projectDescription != null">
-        #{projectDescription,jdbcType=VARCHAR},
-      </if>
-      <if test="money != null">
-        #{money,jdbcType=BIGINT},
-      </if>
-      <if test="day != null">
-        #{day,jdbcType=INTEGER},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="deployDate != null">
-        #{deployDate,jdbcType=VARCHAR},
-      </if>
-      <if test="supportMoney != null">
-        #{supportMoney,jdbcType=BIGINT},
-      </if>
-      <if test="supporter != null">
-        #{supporter,jdbcType=INTEGER},
-      </if>
-      <if test="completion != null">
-        #{completion,jdbcType=INTEGER},
-      </if>
-      <if test="memberId != null">
-        #{memberId,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null">
-        #{createDate,jdbcType=VARCHAR},
-      </if>
-      <if test="follower != null">
-        #{follower,jdbcType=INTEGER},
-      </if>
-      <if test="headerPicturePath != null">
-        #{headerPicturePath,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample" resultType="java.lang.Long">
-    select count(*) from t_project
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update t_project
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.projectName != null">
+    </sql>
+
+    <!--  查询项目详情-->
+    <select id="selectProjectDetailByProjectId" resultMap="ProjectDetailResultMap">
+        select  id,
+                project_name,
+                project_description,
+                money,
+                day,
+                status,
+                deploy_date,
+                support_money,
+                support_money/money*100 percentage,
+                supporter,
+                follower,
+                header_picture_path
+        from t_project
+        where id=#{id}
+    </select>
+    <!--  查询项目详情图-->
+    <select id="selectProjectDetailPicturePath" resultType="string">
+        select item_pic_path
+        from t_project_item_pic
+        where project_id=#{id}
+    </select>
+    <!--  查询项目回报信息-->
+    <select id="selectReturnList" resultType="com.example.crowdfunding.bean.vo.ReturnDetailVO">
+        select  id returnId,
+                support_money supportMoney,
+                content,
+                signal_purchase signalPurchase,
+                purchase,
+                freight,
+                return_date returnDate
+        from t_return
+        where project_id=#{id}
+    </select>
+    <!--  查询分类-->
+    <select id="selectPortalTypeList" resultMap="PortalTypeResultMap">
+        select id, name, remark
+        from t_type
+    </select>
+    <!--  根据分类id查询首页项目信息-->
+    <select id="selectPortalProjectList" resultType="com.example.crowdfunding.bean.vo.PortalProjectVO">
+        select t_project.id                projectId,
+               project_name                projectName,
+               header_picture_path         headerPicturePath,
+               money,
+               deploy_date                 deployDate,
+               support_money / money * 100 percentage,
+               supporter
+        from t_project
+                 left join t_project_type
+                           on t_project.id = t_project_type.project_id
+        where type_id = #{id}
+        order by t_project.id desc limit 0,4
+    </select>
+    <select id="selectByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from t_project
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_project
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from t_project
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample">
+        delete from t_project
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
+        insert into t_project (id, project_name, project_description,
+                               money, DAY, STATUS,
+                               deploy_date, support_money, supporter,
+                               COMPLETION, member_id, create_date,
+                               follower, header_picture_path)
+        values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectDescription,jdbcType=VARCHAR},
+                #{money,jdbcType=BIGINT}, #{day,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+                #{deployDate,jdbcType=VARCHAR}, #{supportMoney,jdbcType=BIGINT}, #{supporter,jdbcType=INTEGER},
+                #{completion,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{createDate,jdbcType=VARCHAR},
+                #{follower,jdbcType=INTEGER}, #{headerPicturePath,jdbcType=VARCHAR})
+    </insert>
+    <!--  插入项目与分类的信息-->
+    <insert id="insertTypeRelationship">
+        insert into t_project_type(project_id, type_id) values
+        <foreach collection="typeIdList" item="typeId" separator=",">(#{projectId},#{typeId})</foreach>
+    </insert>
+    <!--  插入项目与标签的信息-->
+    <insert id="insertTagRelationship">
+        insert into t_project_tag(project_id, tag_id) values
+        <foreach collection="tagIdList" item="tagId" separator=",">(#{projectId},#{tagId})</foreach>
+    </insert>
+    <!--  添加返回自增主键-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.example.crowdfunding.bean.po.ProjectPO">
+        insert into t_project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="projectName != null">
+                project_name,
+            </if>
+            <if test="projectDescription != null">
+                project_description,
+            </if>
+            <if test="money != null">
+                money,
+            </if>
+            <if test="day != null">
+                DAY,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="deployDate != null">
+                deploy_date,
+            </if>
+            <if test="supportMoney != null">
+                support_money,
+            </if>
+            <if test="supporter != null">
+                supporter,
+            </if>
+            <if test="completion != null">
+                COMPLETION,
+            </if>
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="follower != null">
+                follower,
+            </if>
+            <if test="headerPicturePath != null">
+                header_picture_path,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="projectName != null">
+                #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="projectDescription != null">
+                #{projectDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                #{money,jdbcType=BIGINT},
+            </if>
+            <if test="day != null">
+                #{day,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="deployDate != null">
+                #{deployDate,jdbcType=VARCHAR},
+            </if>
+            <if test="supportMoney != null">
+                #{supportMoney,jdbcType=BIGINT},
+            </if>
+            <if test="supporter != null">
+                #{supporter,jdbcType=INTEGER},
+            </if>
+            <if test="completion != null">
+                #{completion,jdbcType=INTEGER},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=VARCHAR},
+            </if>
+            <if test="follower != null">
+                #{follower,jdbcType=INTEGER},
+            </if>
+            <if test="headerPicturePath != null">
+                #{headerPicturePath,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.example.crowdfunding.bean.po.ProjectPOExample"
+            resultType="java.lang.Long">
+        select count(*) from t_project
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update t_project
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.projectName != null">
+                project_name = #{record.projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectDescription != null">
+                project_description = #{record.projectDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="record.money != null">
+                money = #{record.money,jdbcType=BIGINT},
+            </if>
+            <if test="record.day != null">
+                DAY = #{record.day,jdbcType=INTEGER},
+            </if>
+            <if test="record.status != null">
+                STATUS = #{record.status,jdbcType=INTEGER},
+            </if>
+            <if test="record.deployDate != null">
+                deploy_date = #{record.deployDate,jdbcType=VARCHAR},
+            </if>
+            <if test="record.supportMoney != null">
+                support_money = #{record.supportMoney,jdbcType=BIGINT},
+            </if>
+            <if test="record.supporter != null">
+                supporter = #{record.supporter,jdbcType=INTEGER},
+            </if>
+            <if test="record.completion != null">
+                COMPLETION = #{record.completion,jdbcType=INTEGER},
+            </if>
+            <if test="record.memberId != null">
+                member_id = #{record.memberId,jdbcType=INTEGER},
+            </if>
+            <if test="record.createDate != null">
+                create_date = #{record.createDate,jdbcType=VARCHAR},
+            </if>
+            <if test="record.follower != null">
+                follower = #{record.follower,jdbcType=INTEGER},
+            </if>
+            <if test="record.headerPicturePath != null">
+                header_picture_path = #{record.headerPicturePath,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update t_project
+        set id = #{record.id,jdbcType=INTEGER},
         project_name = #{record.projectName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.projectDescription != null">
         project_description = #{record.projectDescription,jdbcType=VARCHAR},
-      </if>
-      <if test="record.money != null">
         money = #{record.money,jdbcType=BIGINT},
-      </if>
-      <if test="record.day != null">
         DAY = #{record.day,jdbcType=INTEGER},
-      </if>
-      <if test="record.status != null">
         STATUS = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.deployDate != null">
         deploy_date = #{record.deployDate,jdbcType=VARCHAR},
-      </if>
-      <if test="record.supportMoney != null">
         support_money = #{record.supportMoney,jdbcType=BIGINT},
-      </if>
-      <if test="record.supporter != null">
         supporter = #{record.supporter,jdbcType=INTEGER},
-      </if>
-      <if test="record.completion != null">
         COMPLETION = #{record.completion,jdbcType=INTEGER},
-      </if>
-      <if test="record.memberId != null">
         member_id = #{record.memberId,jdbcType=INTEGER},
-      </if>
-      <if test="record.createDate != null">
         create_date = #{record.createDate,jdbcType=VARCHAR},
-      </if>
-      <if test="record.follower != null">
         follower = #{record.follower,jdbcType=INTEGER},
-      </if>
-      <if test="record.headerPicturePath != null">
-        header_picture_path = #{record.headerPicturePath,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update t_project
-    set id = #{record.id,jdbcType=INTEGER},
-      project_name = #{record.projectName,jdbcType=VARCHAR},
-      project_description = #{record.projectDescription,jdbcType=VARCHAR},
-      money = #{record.money,jdbcType=BIGINT},
-      DAY = #{record.day,jdbcType=INTEGER},
-      STATUS = #{record.status,jdbcType=INTEGER},
-      deploy_date = #{record.deployDate,jdbcType=VARCHAR},
-      support_money = #{record.supportMoney,jdbcType=BIGINT},
-      supporter = #{record.supporter,jdbcType=INTEGER},
-      COMPLETION = #{record.completion,jdbcType=INTEGER},
-      member_id = #{record.memberId,jdbcType=INTEGER},
-      create_date = #{record.createDate,jdbcType=VARCHAR},
-      follower = #{record.follower,jdbcType=INTEGER},
-      header_picture_path = #{record.headerPicturePath,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
-    update t_project
-    <set>
-      <if test="projectName != null">
-        project_name = #{projectName,jdbcType=VARCHAR},
-      </if>
-      <if test="projectDescription != null">
-        project_description = #{projectDescription,jdbcType=VARCHAR},
-      </if>
-      <if test="money != null">
-        money = #{money,jdbcType=BIGINT},
-      </if>
-      <if test="day != null">
-        DAY = #{day,jdbcType=INTEGER},
-      </if>
-      <if test="status != null">
-        STATUS = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="deployDate != null">
-        deploy_date = #{deployDate,jdbcType=VARCHAR},
-      </if>
-      <if test="supportMoney != null">
-        support_money = #{supportMoney,jdbcType=BIGINT},
-      </if>
-      <if test="supporter != null">
-        supporter = #{supporter,jdbcType=INTEGER},
-      </if>
-      <if test="completion != null">
-        COMPLETION = #{completion,jdbcType=INTEGER},
-      </if>
-      <if test="memberId != null">
-        member_id = #{memberId,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null">
-        create_date = #{createDate,jdbcType=VARCHAR},
-      </if>
-      <if test="follower != null">
-        follower = #{follower,jdbcType=INTEGER},
-      </if>
-      <if test="headerPicturePath != null">
-        header_picture_path = #{headerPicturePath,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
-    update t_project
-    set project_name = #{projectName,jdbcType=VARCHAR},
-      project_description = #{projectDescription,jdbcType=VARCHAR},
-      money = #{money,jdbcType=BIGINT},
-      DAY = #{day,jdbcType=INTEGER},
-      STATUS = #{status,jdbcType=INTEGER},
-      deploy_date = #{deployDate,jdbcType=VARCHAR},
-      support_money = #{supportMoney,jdbcType=BIGINT},
-      supporter = #{supporter,jdbcType=INTEGER},
-      COMPLETION = #{completion,jdbcType=INTEGER},
-      member_id = #{memberId,jdbcType=INTEGER},
-      create_date = #{createDate,jdbcType=VARCHAR},
-      follower = #{follower,jdbcType=INTEGER},
-      header_picture_path = #{headerPicturePath,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        header_picture_path = #{record.headerPicturePath,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
+        update t_project
+        <set>
+            <if test="projectName != null">
+                project_name = #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="projectDescription != null">
+                project_description = #{projectDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="money != null">
+                money = #{money,jdbcType=BIGINT},
+            </if>
+            <if test="day != null">
+                DAY = #{day,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="deployDate != null">
+                deploy_date = #{deployDate,jdbcType=VARCHAR},
+            </if>
+            <if test="supportMoney != null">
+                support_money = #{supportMoney,jdbcType=BIGINT},
+            </if>
+            <if test="supporter != null">
+                supporter = #{supporter,jdbcType=INTEGER},
+            </if>
+            <if test="completion != null">
+                COMPLETION = #{completion,jdbcType=INTEGER},
+            </if>
+            <if test="memberId != null">
+                member_id = #{memberId,jdbcType=INTEGER},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=VARCHAR},
+            </if>
+            <if test="follower != null">
+                follower = #{follower,jdbcType=INTEGER},
+            </if>
+            <if test="headerPicturePath != null">
+                header_picture_path = #{headerPicturePath,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.crowdfunding.bean.po.ProjectPO">
+        update t_project
+        set project_name        = #{projectName,jdbcType=VARCHAR},
+            project_description = #{projectDescription,jdbcType=VARCHAR},
+            money               = #{money,jdbcType=BIGINT},
+            DAY                 = #{day,jdbcType=INTEGER},
+            STATUS              = #{status,jdbcType=INTEGER},
+            deploy_date         = #{deployDate,jdbcType=VARCHAR},
+            support_money       = #{supportMoney,jdbcType=BIGINT},
+            supporter           = #{supporter,jdbcType=INTEGER},
+            COMPLETION          = #{completion,jdbcType=INTEGER},
+            member_id           = #{memberId,jdbcType=INTEGER},
+            create_date         = #{createDate,jdbcType=VARCHAR},
+            follower            = #{follower,jdbcType=INTEGER},
+            header_picture_path = #{headerPicturePath,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>
