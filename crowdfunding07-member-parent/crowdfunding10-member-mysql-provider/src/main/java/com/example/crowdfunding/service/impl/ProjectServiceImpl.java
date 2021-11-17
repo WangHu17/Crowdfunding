@@ -53,6 +53,11 @@ public class ProjectServiceImpl implements ProjectService {
         String createDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         projectPO.setCreateDate(createDate);
         projectPO.setStatus(0);
+        projectPO.setSupportMoney((long) 0);
+        projectPO.setSupporter(0);
+        projectPO.setCompletion(0);
+        projectPO.setFollower(0);
+        projectPO.setDeployDate(createDate);
         projectPOMapper.insertSelective(projectPO);
         // 获取项目的自增id
         Integer projectId = projectPO.getId();

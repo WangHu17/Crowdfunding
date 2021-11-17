@@ -46,6 +46,9 @@ public class CrowdAccessFilter extends ZuulFilter {
         // 如果是允许访问的资源，放行
         if (allow)return false;
 
+        // 过滤项目详情页
+        if(servletPath.contains("/project/get/project/detail"))return false;
+
         // 如果是静态资源，也放行
         return !AllowAccessResources.judgeUrlWeatherStaticResource(servletPath);
     }

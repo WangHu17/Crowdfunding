@@ -252,54 +252,54 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <form id="projectForm" th:action="@{project/create/project/information}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                    <p th:text="${message}"></p>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" style="text-align: center;">
-                            <div class="container-fluid">
-                                <div class="row clearfix">
-                                    <div class="col-md-3 column">
-                                        <div class="progress" style="height: 50px; border-radius: 0; position: absolute; width: 75%; right: 49px;">
-                                            <div class="progress-bar progress-bar-success"
-                                                 role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                 aria-valuemax="100" style="width: 100%; height: 50px;">
-                                                <div style="font-size: 16px; margin-top: 15px;">1. 项目及发起人信息</div>
-                                            </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align: center;">
+                        <div class="container-fluid">
+                            <div class="row clearfix">
+                                <div class="col-md-3 column">
+                                    <div class="progress" style="height: 50px; border-radius: 0; position: absolute; width: 75%; right: 49px;">
+                                        <div class="progress-bar progress-bar-success"
+                                             role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 100%; height: 50px;">
+                                            <div style="font-size: 16px; margin-top: 15px;">1. 项目及发起人信息</div>
                                         </div>
-                                        <div style="right: 0; border: 10px solid #ddd; border-left-color: #88b7d5; border-width: 25px; position: absolute; border-left-color: rgba(92, 184, 92, 1); border-top-color: rgba(92, 184, 92, 0); border-bottom-color: rgba(92, 184, 92, 0); border-right-color: rgba(92, 184, 92, 0);"></div>
                                     </div>
-                                    <div class="col-md-3 column">
-                                        <div class="progress" style="height: 50px; border-radius: 0; position: absolute; width: 75%; right: 49px;">
-                                            <div class="progress-bar progress-bar-default"
-                                                 role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                 aria-valuemax="100" style="width: 100%; height: 50px;">
-                                                <div style="font-size: 16px; margin-top: 15px;">2. 回报设置</div>
-                                            </div>
+                                    <div style="right: 0; border: 10px solid #ddd; border-left-color: #88b7d5; border-width: 25px; position: absolute; border-left-color: rgba(92, 184, 92, 1); border-top-color: rgba(92, 184, 92, 0); border-bottom-color: rgba(92, 184, 92, 0); border-right-color: rgba(92, 184, 92, 0);"></div>
+                                </div>
+                                <div class="col-md-3 column">
+                                    <div class="progress" style="height: 50px; border-radius: 0; position: absolute; width: 75%; right: 49px;">
+                                        <div class="progress-bar progress-bar-default"
+                                             role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 100%; height: 50px;">
+                                            <div style="font-size: 16px; margin-top: 15px;">2. 回报设置</div>
                                         </div>
-                                        <div style="right: 0; border: 10px solid #ddd; border-left-color: #88b7d5; border-width: 25px; position: absolute; border-left-color: rgba(221, 221, 221, 1); border-top-color: rgba(221, 221, 221, 0); border-bottom-color: rgba(221, 221, 221, 0); border-right-color: rgba(221, 221, 221, 0);"></div>
                                     </div>
-                                    <div class="col-md-3 column">
-                                        <div class="progress" style="height: 50px; border-radius: 0; position: absolute; width: 75%; right: 49px;">
-                                            <div class="progress-bar progress-bar-default"
-                                                 role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                 aria-valuemax="100" style="width: 100%; height: 50px;">
-                                                <div style="font-size: 16px; margin-top: 15px;">3. 确认信息</div>
-                                            </div>
+                                    <div style="right: 0; border: 10px solid #ddd; border-left-color: #88b7d5; border-width: 25px; position: absolute; border-left-color: rgba(221, 221, 221, 1); border-top-color: rgba(221, 221, 221, 0); border-bottom-color: rgba(221, 221, 221, 0); border-right-color: rgba(221, 221, 221, 0);"></div>
+                                </div>
+                                <div class="col-md-3 column">
+                                    <div class="progress" style="height: 50px; border-radius: 0; position: absolute; width: 75%; right: 49px;">
+                                        <div class="progress-bar progress-bar-default"
+                                             role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 100%; height: 50px;">
+                                            <div style="font-size: 16px; margin-top: 15px;">3. 确认信息</div>
                                         </div>
-                                        <div style="right: 0; border: 10px solid #ddd; border-left-color: #88b7d5; border-width: 25px; position: absolute; border-left-color: rgba(221, 221, 221, 1); border-top-color: rgba(221, 221, 221, 0); border-bottom-color: rgba(221, 221, 221, 0); border-right-color: rgba(221, 221, 221, 0);"></div>
                                     </div>
-                                    <div class="col-md-3 column">
-                                        <div class="progress" style="height: 50px; border-radius: 0;">
-                                            <div class="progress-bar progress-bar-default"
-                                                 role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                                 aria-valuemax="100" style="width: 100%; height: 50px;">
-                                                <div style="font-size: 16px; margin-top: 15px;">4. 完成</div>
-                                            </div>
+                                    <div style="right: 0; border: 10px solid #ddd; border-left-color: #88b7d5; border-width: 25px; position: absolute; border-left-color: rgba(221, 221, 221, 1); border-top-color: rgba(221, 221, 221, 0); border-bottom-color: rgba(221, 221, 221, 0); border-right-color: rgba(221, 221, 221, 0);"></div>
+                                </div>
+                                <div class="col-md-3 column">
+                                    <div class="progress" style="height: 50px; border-radius: 0;">
+                                        <div class="progress-bar progress-bar-default"
+                                             role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 100%; height: 50px;">
+                                            <div style="font-size: 16px; margin-top: 15px;">4. 完成</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <form id="projectForm" th:action="@{project/create/project/information}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <p th:text="${message}"></p>
                         <div class="panel-body">
                             <div class="container-fluid">
                                 <div class="row clearfix">
@@ -320,7 +320,7 @@
                                                     科技
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="checkbox" name="typeIdList" id="inlineRadio2" value="2" checked="checked">
+                                                    <input type="checkbox" name="typeIdList" id="inlineRadio2" value="2">
                                                     设计
                                                 </label>
                                                 <label class="radio-inline">
@@ -328,7 +328,7 @@
                                                     公益
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="checkbox" name="typeIdList" id="inlineRadio4" value="4" checked="checked">
+                                                    <input type="checkbox" name="typeIdList" id="inlineRadio4" value="4">
                                                     农业
                                                 </label>
                                             </div>
@@ -356,26 +356,26 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">项目名称</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="projectName" value="brotherMao" class="form-control">
+                                                <input type="text" name="projectName" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">一句话简介</label>
                                             <div class="col-sm-10">
-                                                <textarea name="projectDescription" class="form-control" rows="5">就是帅！</textarea>
+                                                <textarea name="projectDescription" class="form-control" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">筹资金额（元）</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="money" value="100000" class="form-control" style="width: 100px;">
+                                                <input type="number" name="money" class="form-control" style="width: 100px;">
                                                 <label class="control-label">筹资金额不能低于100元,不能高于1000000000元</label>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">筹资天数（天）</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="day" value="30" class="form-control" style="width: 100px;">
+                                                <input type="number" name="day" value="30" class="form-control" style="width: 100px;">
                                                 <label class="control-label">一般10-90天，建议30天</label>
                                             </div>
                                         </div>
@@ -411,22 +411,22 @@
                                             <label class="col-sm-2 control-label">自我介绍</label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="memberLauchInfoVO.descriptionSimple"
-                                                       value="i am mao" class="form-control"
+                                                       class="form-control"
                                                        placeholder="一句话自我介绍，不超过40字">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">详细自我介绍</label>
                                             <div class="col-sm-10">
-													<textarea name="memberLauchInfoVO.descriptionDetail"
+                                                    <textarea name="memberLauchInfoVO.descriptionDetail"
                                                               class="form-control" rows="5"
-                                                              placeholder="向支持者详细介绍你自己或你的团队及项目背景，让支持者在最短时间内了解你，不超过160字">我是猫哥</textarea>
+                                                              placeholder="向支持者详细介绍你自己或你的团队及项目背景，让支持者在最短时间内了解你，不超过160字"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">联系电话</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="memberLauchInfoVO.phoneNum" value="123456"
+                                                <input type="text" name="memberLauchInfoVO.phoneNum"
                                                        class="form-control"
                                                        placeholder="此信息不会显示在项目页面">
                                             </div>
@@ -434,7 +434,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">客服电话</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="memberLauchInfoVO.serviceNum" value="654321"
+                                                <input type="text" name="memberLauchInfoVO.serviceNum"
                                                        class="form-control"
                                                        placeholder="此信息显示在项目页面">
                                             </div>
@@ -446,8 +446,8 @@
                         <div class="panel-footer" style="text-align: center;">
                             <button id="submitBtn" type="button" class="btn  btn-warning btn-lg">下一步</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
