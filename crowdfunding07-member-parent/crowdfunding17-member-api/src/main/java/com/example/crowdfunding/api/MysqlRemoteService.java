@@ -1,6 +1,8 @@
 package com.example.crowdfunding.api;
 
+import com.example.crowdfunding.bean.po.AddressPO;
 import com.example.crowdfunding.bean.po.MemberPO;
+import com.example.crowdfunding.bean.vo.OrderProjectVO;
 import com.example.crowdfunding.bean.vo.PortalTypeVO;
 import com.example.crowdfunding.bean.vo.ProjectDetailVO;
 import com.example.crowdfunding.bean.vo.ProjectVO;
@@ -37,4 +39,12 @@ public interface MysqlRemoteService {
     @RequestMapping("/get/project/detail/{id}")
     ResultEntity<ProjectDetailVO> getProjectDetailVORemote(@PathVariable("id")Integer projectId);
 
+    @RequestMapping("/get/order/projectvO/remote")
+    ResultEntity<OrderProjectVO> getOrderProjectVORemote(@RequestParam("returnId")Integer returnId);
+
+    @RequestMapping("/get/shipping/address/remote")
+    ResultEntity<List<AddressPO>> getShippingAddressList(@RequestParam("memberId") Integer memberId);
+
+    @RequestMapping("/save/shipping/address")
+    ResultEntity<String> saveShippingAddress(@RequestBody AddressPO addressPO);
 }

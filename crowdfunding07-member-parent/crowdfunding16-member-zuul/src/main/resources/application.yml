@@ -21,6 +21,9 @@ zuul:
     crowd-project:
       service-id: wh-crowd-project
       path: /project/**
+    crowd-order:
+      service-id: wh-crowd-order
+      path: /order/**
 ribbon:
   eureka:
     enabled: true

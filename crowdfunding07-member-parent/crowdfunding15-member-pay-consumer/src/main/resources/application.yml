@@ -1,0 +1,31 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: wh-crowd-pay
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  redis:
+    host: 192.168.25.122
+  session:
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+ali:
+  pay:
+    alipay-public-key:
+    app-id:
+    charset: utf-8
+    gateway-url: https://openapi.alipaydev.com/gateway.do
+    merchant-private-key:
+    notify-url: http://localhost/pay/notify
+    return-url: http://localhost/pay/return
+    sign-type: RSA2
