@@ -21,8 +21,8 @@ ribbon:
   ConnectTimeout: 10000
 aliyun:
   oss:
-    access-key-id: LTAI5tLxuTbduh1NLNbPgcz3
-    access-key-secret: kZdPoFiP7ighWqUYOr7qqGbvvMqhqp
+    access-key-id: 
+    access-key-secret: 
     bucket-domain: https://wanghu5517.oss-cn-beijing.aliyuncs.com
     bucket-name: wanghu5517
     end-point: https://oss-cn-beijing.aliyuncs.com
